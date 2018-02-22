@@ -181,7 +181,7 @@ $(document).ready(function() {
                     datarow["id"] = per_log.id
 
                     datarow['table'] = per_log.table;
-                    datarow['country'] = per_log.user.country;
+                    datarow['country'] = per_log.user.country.<fmt:message key="data.field" />;
                     datarow['user'] = per_log.user;
                     datarow['time'] = per_log.timestamp;
                     datarow['note'] = per_log.note;

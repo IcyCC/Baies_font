@@ -56,7 +56,7 @@ $(document).ready(function() {
                 var datarow = {}
                 datarow['id'] = resp.data[index].id
                 datarow['email'] = resp.data[index].email
-                datarow['country'] = resp.data[index].country
+                datarow['country'] = resp.data[index].country.<fmt:message key="data.field" />
 				datarow['name'] = resp.data[index].username
 				datarow['role'] = resp.data[index].role.name
 				datarow['operation'] = $(row).find('li:nth-child(8)').html()
