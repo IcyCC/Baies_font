@@ -217,30 +217,33 @@ $(document).ready(function() {
             '\'<tr><td>请输入中文名:</td><td><input id="d_index_editor_cn_alis" type="text"></td></tr>'+
             '<tr><td>请输入英文名:</td><td><input id="d_index_editor_en_alis" type="text"></td></tr>'+'</table>');
         $('#dialog_window').one('close', function(event) {
-            var post_data = {name:'', cn_alis: '', en_alis:'', unit:'', table_id:0}
+            if(event.args.dialogResult.OK) {
+                var post_data = {name: '', cn_alis: '', en_alis: '', unit: '', table_id: 0}
 
-            post_data.name = $('#d_index_editor_name').val()
-            post_data.cn_alis = $('#d_index_editor_cn_alis').val()
-            post_data.en_alis = $('#d_index_editor_en_alis').val()
-			post_data.unit = $('#d_index_editor_unit').val()
-            post_data.table_id = $('#cat_tree').jqxTree('getSelectedItem').value
-            $.ajax({
-                type:'POST',
-                url:host+'/quantify/socioeconomic_index',
-                data: post_data,
-                xhrFields: {
-                    withCredentials: true
-                },
-                crossDomain: true,
-                async: false,
-                success: function (resp) {
-                    if(event.args.dialogResult.OK) {
+                post_data.name = $('#d_index_editor_name').val()
+                post_data.cn_alis = $('#d_index_editor_cn_alis').val()
+                post_data.en_alis = $('#d_index_editor_en_alis').val()
+                post_data.unit = $('#d_index_editor_unit').val()
+                post_data.table_id = $('#cat_tree').jqxTree('getSelectedItem').value
+                $.ajax({
+                    type: 'POST',
+                    url: host + '/quantify/socioeconomic_index',
+                    data: post_data,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    async: false,
+                    success: function (resp) {
+
                         $('#message_notification_content').html('编辑成功。');
                         $('#message_notification').jqxNotification('open');
                         window.location.reload();
                     }
-                }
-            })
+
+                })
+
+            }
         });
         $('#dialog_window').jqxWindow('open');
     });
