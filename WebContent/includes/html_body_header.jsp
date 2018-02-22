@@ -151,7 +151,7 @@ String jqx_nav_theme = (String)request.getSession().getAttribute("jqx_nav_theme"
 		<a href="" id="login">登录</a>
 		<span id="manage">
 			欢迎您<span id="curent_user_detail"></span>
-			<span style="display: none"> <a href="./" id="logout"><fmt:message key="text.logout" /></a></span>
+			<span id="logout"> <a href="./"><fmt:message key="text.logout" /></a></span>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a id="country_manage" href="country_policy_management.jsp"><fmt:message key="common.sub_system.country_manage" /></a>
 			&nbsp;
