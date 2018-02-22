@@ -44,7 +44,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/user/User',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
 		async: false,
         success: function (resp) {
             for (var index in resp.data) {
@@ -65,7 +68,10 @@ $(document).ready(function() {
         url:host+'/user/Role',
         data: {},
         async: false,
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         success: function (resp) {
             for (var index in resp.data) {
                 role_data.push({label:resp.data[index].name, value: resp.data[index].id})
@@ -138,7 +144,10 @@ $(document).ready(function() {
                             url:host+'/user/User',
                             data: post_data,
                             async: true,
-                            withCredentials: true,
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            crossDomain: true,
                             success: function (resp) {
                                 if (resp.status === "success")
 								{
@@ -204,7 +213,10 @@ $(document).ready(function() {
                     url:host+'/user/User/'+user.id,
                     data: post_data,
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -227,7 +239,10 @@ $(document).ready(function() {
                     url:host+'/user/User/'+user.id,
                     data: {},
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {

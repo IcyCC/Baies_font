@@ -121,7 +121,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/country',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: true,
         success: function (resp) {
             for (var index in resp.data) {
@@ -135,7 +138,10 @@ $(document).ready(function() {
             type:'GET',
             url:host+'/user/SocLog',
             data:{},
-            withCredentials: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
             async: true,
             success: function (resp) {
                 for (var index in resp.data) {
@@ -322,7 +328,10 @@ $(document).ready(function() {
                     $.ajax({
                         async: true,
                         crossDomain: true,
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         url: host+"/quantify/socioeconomic_table",
                         method: "PUT",
                         data: post_data,
@@ -343,8 +352,10 @@ $(document).ready(function() {
 
                     $.ajax({
                         async: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
                         crossDomain: true,
-                        withCredentials: true,
                         url: host+"/quantify/socioeconomic_table",
                         method: "PUT",
                         data: post_data,
@@ -367,8 +378,10 @@ $(document).ready(function() {
 
             $.ajax({
                 async: true,
+                xhrFields: {
+                    withCredentials: true
+                },
                 crossDomain: true,
-                withCredentials: true,
                 url: host+"/quantify/socioeconomic_table/"+log.table_id+"/indexes",
                 method: "GET",
                 data: {},
@@ -393,7 +406,10 @@ $(document).ready(function() {
                         type:'GET',
                         url:host+'/quantify/socioeconomic_facts'+'?'+ parseParam(query_args),
                         data: {},
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         async: true,
                         success: function (resp) {
 
@@ -462,7 +478,10 @@ $(document).ready(function() {
                         type:'GET',
                         url:host+'/quantify/socioeconomic_facts'+'?'+ parseParam(query_args),
                         data: {},
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         async: true,
                         success: function (resp) {
 

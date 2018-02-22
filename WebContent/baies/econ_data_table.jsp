@@ -98,7 +98,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/socioeconomic_table',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: false,
         success: function (resp) {
             for (var table in resp.data) {
@@ -117,7 +120,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/country',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: true,
         success: function (resp) {
             for (var index in resp.data) {
@@ -321,7 +327,10 @@ $(document).ready(function() {
             type:'GET',
             url:host+'/quantify/socioeconomic_facts'+location.search,
             data: {},
-            withCredentials: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
             async: true,
             success: function (resp) {
 

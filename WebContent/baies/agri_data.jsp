@@ -67,7 +67,10 @@ $.ajax({
     type:'GET',
     url:host+'/quantify/country',
     data: {},
-    withCredentials: true,
+    xhrFields: {
+        withCredentials: true
+    },
+    crossDomain: true,
     success: function (resp) {
         for (var index in resp.data) {
             country_data.push(resp.data[index])
@@ -81,7 +84,10 @@ $.ajax({
     type:'GET',
     url:host+'/quantify/agriculture_kinds',
     data: {},
-    withCredentials: true,
+    xhrFields: {
+        withCredentials: true
+    },
+    crossDomain: true,
     success: function (resp) {
         for (var index in resp.data) {
             kind_data.push(resp.data[index])

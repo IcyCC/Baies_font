@@ -168,7 +168,10 @@ $(document).ready(function() {
     $.ajax({
         type: "get",
         async: false,
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         url: host+"/qualitative/Post/simple",
         data: {},
         success: function (result) {

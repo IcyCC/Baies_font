@@ -79,7 +79,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/agriculture_table',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: false,
         success: function (resp) {
             for (var table in resp.data) {
@@ -97,7 +100,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/country',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: true,
         success: function (resp) {
             for (var index in resp.data) {
@@ -114,7 +120,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/agriculture_kinds',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: true,
         success: function (resp) {
             for (var index in resp.data) {
@@ -349,7 +358,10 @@ $(document).ready(function() {
             type:'GET',
             url:host+'/quantify/agriculture_facts/graph'+location.search,
             data: {},
-            withCredentials: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
             async: true,
             success: function (resp) {
 

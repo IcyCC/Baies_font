@@ -129,7 +129,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/country',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: true,
         success: function (resp) {
             for (var index in resp.data) {
@@ -142,7 +145,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/quantify/agriculture_kinds',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: true,
         success: function (resp) {
             for (var index in resp.data) {
@@ -156,7 +162,10 @@ $(document).ready(function() {
             type:'GET',
             url:host+'/user/ArgLog',
             data:{},
-            withCredentials: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
             async: true,
             success: function (resp) {
                 console.log(resp)
@@ -381,8 +390,10 @@ $(document).ready(function() {
 
                     $.ajax({
                         async: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
                         crossDomain: true,
-                        withCredentials: true,
                         url: host+"/quantify/agriculture_table",
                         method: "PUT",
                         data: post_data,
@@ -403,8 +414,10 @@ $(document).ready(function() {
 
                     $.ajax({
                         async: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
                         crossDomain: true,
-                        withCredentials: true,
                         url: host+"/quantify/agriculture_table",
                         method: "PUT",
                         data: post_data,
@@ -427,8 +440,10 @@ $(document).ready(function() {
 
             $.ajax({
                 async: true,
+                xhrFields: {
+                    withCredentials: true
+                },
                 crossDomain: true,
-                withCredentials: true,
                 url: host+"/quantify/agriculture_table/"+log.table_id+"/indexes",
                 method: "GET",
                 data: {},
@@ -456,7 +471,10 @@ $(document).ready(function() {
                         type:'GET',
                         url:host+'/quantify/agriculture_facts'+'?'+ parseParam(query_args),
                         data: {},
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         async: true,
                         success: function (resp) {
                             for (var index_id_i in query_args.index_ids) {
@@ -536,7 +554,10 @@ $(document).ready(function() {
                         type:'GET',
                         url:host+'/quantify/agriculture_facts'+'?'+ parseParam(query_args),
                         data: {},
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         async: true,
                         success: function (resp) {
                             for (var index_id_i in query_args.index_ids) {

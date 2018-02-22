@@ -113,7 +113,10 @@ $(document).ready(function() {
                 type:'GET',
                 url:host+'/qualitative/Post',
                 data: {kind_id:selete_cat[3]},
-                withCredentials: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 async: true,
                 success: function (resp) {
                     for (var index in resp.data) {
