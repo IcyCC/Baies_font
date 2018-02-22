@@ -24,6 +24,7 @@ $(document).ready(function() {
 	var rows = $("#user_ul");
 	var data = [];
 	var role_data = [];
+	var country_data=[];
 	// for (var i = 0; i < 100; i++) {
 	// 	var row = rows[0];
 	// 	var datarow = {};
@@ -79,6 +80,24 @@ $(document).ready(function() {
             console.log('role_data', role_data)
         }
     })
+
+    $.ajax({
+        type:'GET',
+        url:host+'/quantify/country',
+        data: {},
+        async: false,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        success: function (resp) {
+            for (var index in resp.data) {
+                country_data.push(resp.data[index])
+            }
+            console.log('role_data', country_data)
+        }
+    })
+
 	var source = {
 			localdata: data,
 			datatype: 'array',
@@ -126,14 +145,14 @@ $(document).ready(function() {
 					    var post_data = {
                             email: "",
                             username: "",
-                            country: "",
+                            country_id: "",
                             role_id: "",
 							password:""
 						};
 
 					    post_data.email = $('#email_input').val();
 						post_data.username = $('#name_input').val();
-						post_data.country = $('#country_input').val();
+						post_data.country_id = $('#country_input').val();
 						post_data.role_id = $('#role_input').val();
 						post_data.password = $('#password_input').val();
 
@@ -195,14 +214,14 @@ $(document).ready(function() {
                 var post_data = {
                     email: "",
                     username: "",
-                    country: "",
+                    country_id: "",
                     role_id: "",
                     password:""
                 };
 
                 post_data.email = $('#email_input').val();
                 post_data.username = $('#name_input').val();
-                post_data.country = $('#country_input').val();
+                post_data.country_id = $('#country_input').val();
                 post_data.role_id = $('#role_input').val();
                 post_data.password = $('#password_input').val();
 
@@ -294,6 +313,7 @@ $(document).ready(function() {
 
     $("#role_input").jqxDropDownList({ source: role_data, displayMember: "label", valueMember: "value" , width: '200px', height: '15px'});
 
+    $('#country_input').jqxDropDownList({ source: country_data, displayMember: '<fmt:message key="data.field" />', valueMember: "id" , width: '200px', height: '15px'})
 });
 
 </script>
@@ -355,7 +375,7 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<td><fmt:message key="common.dimension.country" />:</td>
-				<td><input type="text" id="country_input" style="width: 200px;"></td>
+				<td id="country_input"></td>
 			</tr>
 			<tr>
 				<td>角色:</td>

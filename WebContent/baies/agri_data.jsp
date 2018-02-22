@@ -143,11 +143,11 @@ $(document).ready(function() {
 	$('#time_expander').jqxExpander({
 		width: '280px', height: '100px', showArrow: false, toggleMode: 'none', theme: '<%=jqx_theme %>'
 	});
-	
-	$('#time_slider').jqxSlider({
-		width: '95%', values: [2015,2018 ], min: start_year, max: end_year, mode: 'fixed',
-		rangeSlider: true, theme: '<%=jqx_theme %>', ticksFrequency: 1
-	});
+
+    $('#time_slider').jqxSlider({
+        width: '95%', values: [2005, 2010], min: 2000, max: myDate.getFullYear(), mode: 'fixed',
+        rangeSlider: true, theme: '<%=jqx_theme %>', ticksFrequency: 1
+    });
 	
 	$('#time_slider').on('change', function(event) {
 		$('#time1').html(event.args.value.rangeStart);
