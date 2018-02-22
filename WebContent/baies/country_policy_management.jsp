@@ -45,7 +45,10 @@ $(document).ready(function() {
         type:'GET',
         url:host+'/qualitative/Post',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: false,
         success: function (resp) {
             for (var index in resp.data) {
@@ -137,7 +140,10 @@ $(document).ready(function() {
                             type:'POST',
                             url:host+'/qualitative/Post',
                             data: post_data,
-                            withCredentials: true,
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            crossDomain: true,
                             async: false,
                             success: function (resp) {
                                     $('#message_notification_content').html('信息已保存。');
@@ -204,7 +210,10 @@ $(document).ready(function() {
                         type:'POST',
                         url:host+'/qualitative/Post',
                         data: post_data,
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         async: false,
                         success: function (resp) {
                             $('#message_notification_content').html('信息已保存。');
@@ -271,7 +280,10 @@ $(document).ready(function() {
                         type:'POST',
                         url:host+'/qualitative/Post',
                         data: post_data,
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         async: false,
                         success: function (resp) {
                             $('#message_notification_content').html('信息已保存。');
@@ -338,7 +350,10 @@ $(document).ready(function() {
                         type:'POST',
                         url:host+'/qualitative/Post',
                         data: post_data,
-                        withCredentials: true,
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
                         async: false,
                         success: function (resp) {
                             $('#message_notification_content').html('信息已保存。');
@@ -440,7 +455,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: post_data,
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -463,7 +481,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: {},
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -508,7 +529,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: post_data,
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -531,7 +555,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: {},
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -576,7 +603,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: post_data,
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -599,7 +629,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: {},
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -644,7 +677,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: post_data,
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {
@@ -667,7 +703,10 @@ $(document).ready(function() {
                     url:host+'/qualitative/Post/'+post.id,
                     data: {},
                     async: true,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function (resp) {
                         if (resp.status === "success")
                         {

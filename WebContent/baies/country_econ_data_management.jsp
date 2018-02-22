@@ -45,7 +45,10 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
         type:'GET',
         url:host+'/quantify/socioeconomic_table',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: false,
         success: function (resp) {
             for (var table in resp.data) {
@@ -64,7 +67,10 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
         type:'GET',
         url:host+'/quantify/country',
         data: {},
-        withCredentials: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         success: function (resp) {
             for (var index in resp.data) {
                 country_data.push({label:resp.data[index].<fmt:message key="data.field" />, value:resp.data[index].id, id: resp.data[index].id})

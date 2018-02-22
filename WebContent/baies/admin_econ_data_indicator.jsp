@@ -27,7 +27,10 @@ $.ajax({
     type:'GET',
     url:host+'/quantify/socioeconomic_table',
     data: {},
-    withCredentials: true,
+    xhrFields: {
+        withCredentials: true
+    },
+    crossDomain: true,
     async: false,
     success: function (resp) {
         for (var table in resp.data) {
@@ -129,7 +132,10 @@ $(document).ready(function() {
                     type:'POST',
                     url:host+'/quantify/socioeconomic_table',
                     data: post_data,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     async: false,
                     success: function (resp) {
                         $('#message_notification_content').html('编辑成功。');
@@ -186,7 +192,10 @@ $(document).ready(function() {
                     type:'DELETE',
                     url:host+'/quantify/socioeconomic_table',
                     data: post_data,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     async: false,
                     success: function (resp) {
                         $('#message_notification_content').html('删除成功。');
@@ -219,7 +228,10 @@ $(document).ready(function() {
                 type:'POST',
                 url:host+'/quantify/socioeconomic_index',
                 data: post_data,
-                withCredentials: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 async: false,
                 success: function (resp) {
                     if(event.args.dialogResult.OK) {
@@ -253,7 +265,10 @@ $(document).ready(function() {
                 type:'PUT',
                 url:host+'/quantify/socioeconomic_index',
                 data: post_data,
-                withCredentials: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
                 async: false,
                 success: function (resp) {
 
@@ -280,7 +295,10 @@ $(document).ready(function() {
                     type:'DELETE',
                     url:host+'/quantify/socioeconomic_index',
                     data: post_data,
-                    withCredentials: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     async: false,
                     success: function (resp) {
                         $('#message_notification_content').html('删除成功。');

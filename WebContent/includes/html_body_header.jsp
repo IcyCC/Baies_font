@@ -252,5 +252,18 @@ $(document).ready(function() {
                 <div>密　码：<input name="password" type="password" id="password" size="15" value=""/></div>
                 <div id="submit"><input type="button" value="登录"></div>
             </form>
+			<%--<form id="loginForm" method="post">--%>
+				<%--<div>--%>
+					<%--<label>账号</label>--%>
+					<%--<input type="text" id="userName" placeholder="请输入账号"/>--%>
+				<%--</div>--%>
+				<%--<div>--%>
+					<%--<lable>密码</lable>--%>
+					<%--<input type="password" id="password" placeholder="密码"/>--%>
+				<%--</div>--%>
+				<%--<div class="submit">--%>
+					<%--<button type="submit" id="submit" onclick="login()">登录</button>--%>
+				<%--</div>--%>
+			<%--</form>--%>
 		</div>
 	</div>
