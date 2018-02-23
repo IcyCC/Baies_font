@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MultiProperties xmlns="hu.skzs.multiproperties">
+    <Version>1.2</Version>
+    <Name>text</Name>
+    <Description></Description>
+    <Handler>Java Properties Handler</Handler>
+    <Columns>
+        <Key>
+            <Width>279</Width>
+        </Key>
+        <Column>
+            <Name>en</Name>
+            <Description></Description>
+            <Width>318</Width>
+            <HandlerConfiguration>/BricsBaies/src/org/brics_baies/baies/i18n/text.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+        <Column>
+            <Name>zh</Name>
+            <Description></Description>
+            <Width>249</Width>
+            <HandlerConfiguration>/BricsBaies/src/org/brics_baies/baies/i18n/text_zh.properties|false|false|false|false</HandlerConfiguration>
+        </Column>
+    </Columns>
+    <Records>
+        <Property>
+            <Name>common.language</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">en</Value>
+            <Value disabled="false">zh</Value>
+        </Property>
+        <Property>
+            <Name>common.title</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Basic Agricultural Information Exchange System</Value>
+            <Value disabled="false">金砖国家农业信息交流系统</Value>
+        </Property>
+        <Property>
+            <Name>common.copyright</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Information Institute, Chinese Academy of Agricultural Sciences</Value>
+            <Value disabled="false">中国农业科学院农业信息研究所</Value>
+        </Property>
+        <Property>
+            <Name>common.country.brazil</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Brazil</Value>
+            <Value disabled="false">巴西</Value>
+        </Property>
+        <Property>
+            <Name>common.country.russia</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Russia</Value>
+            <Value disabled="false">俄罗斯</Value>
+        </Property>
+        <Property>
+            <Name>common.country.india</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">India</Value>
+            <Value disabled="false">印度</Value>
+        </Property>
+        <Property>
+            <Name>common.country.china</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">China</Value>
+            <Value disabled="false">中国</Value>
+        </Property>
+        <Property>
+            <Name>common.country.south_africa</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">South Africa</Value>
+            <Value disabled="false">南非</Value>
+        </Property>
+        <Property>
+            <Name>common.country.brics</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">BRICS Countries</Value>
+            <Value disabled="false">金砖国家</Value>
+        </Property>
+        <Property>
+            <Name>common.country.world</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">World</Value>
+            <Value disabled="false">世界</Value>
+        </Property>
+        <Property>
+            <Name>common.dimension.time</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Year</Value>
+            <Value disabled="false">时间</Value>
+        </Property>
+        <Property>
+            <Name>common.dimension.country</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Country</Value>
+            <Value disabled="false">国家</Value>
+        </Property>
+        <Property>
+            <Name>common.dimension.product</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Product</Value>
+            <Value disabled="false">品种</Value>
+        </Property>
+        <Property>
+            <Name>common.dimension.indicator</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Indicator</Value>
+            <Value disabled="false">指标</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.population</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Population</Value>
+            <Value disabled="false">人口数</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.male</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Male</Value>
+            <Value disabled="false">男性</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.female</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Female</Value>
+            <Value disabled="false">女性</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.uban_population</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Uban Population</Value>
+            <Value disabled="false">城市人口</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.rural_population</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Rural Population</Value>
+            <Value disabled="false">农村人口</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.total_production</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Total Production</Value>
+            <Value disabled="false">产量</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.yield</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Yield</Value>
+            <Value disabled="false">单产</Value>
+        </Property>
+        <Property>
+            <Name>common.indicator.harvest_area</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Harvest Area</Value>
+            <Value disabled="false">收获面积</Value>
+        </Property>
+        <Property>
+            <Name>common.product.rice</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Rice</Value>
+            <Value disabled="false">稻谷</Value>
+        </Property>
+        <Property>
+            <Name>common.product.wheat</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Wheat</Value>
+            <Value disabled="false">小麦</Value>
+        </Property>
+        <Property>
+            <Name>common.product.maize</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Maize</Value>
+            <Value disabled="false">玉米</Value>
+        </Property>
+        <Property>
+            <Name>common.role.query_user</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Query User</Value>
+            <Value disabled="false">查询用户</Value>
+        </Property>
+        <Property>
+            <Name>common.role.country_admin</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Country Administrator</Value>
+            <Value disabled="false">国别管理员</Value>
+        </Property>
+        <Property>
+            <Name>common.role.system_admin</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">System Administrator</Value>
+            <Value disabled="false">系统管理员</Value>
+        </Property>
+        <Property>
+            <Name>common.sub_system.country_manage</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Country Management</Value>
+            <Value disabled="false">国别管理</Value>
+        </Property>
+        <Property>
+            <Name>common.sub_system.system_manage</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">System Management</Value>
+            <Value disabled="false">系统管理</Value>
+        </Property>
+        <Property>
+            <Name>common.unit.ten_thousand_hectares</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Ten thousand hectares</Value>
+            <Value disabled="false">万公顷</Value>
+        </Property>
+        <Property>
+            <Name>common.unit.ten_thousand_people</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Ten thousand people</Value>
+            <Value disabled="false">万人</Value>
+        </Property>
+        <Property>
+            <Name>common.unit.ten_thousand_tons</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Ten thousand tons</Value>
+            <Value disabled="false">万吨</Value>
+        </Property>
+        <Property>
+            <Name>common.unit.ton_per_hectare</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Ton/hectare</Value>
+            <Value disabled="false">吨/公顷</Value>
+        </Property>
+        <Property>
+            <Name>nav.query_user.index</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Home</Value>
+            <Value disabled="false">首页</Value>
+        </Property>
+        <Property>
+            <Name>nav.query_user.policy</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Policies</Value>
+            <Value disabled="false">政策信息</Value>
+        </Property>
+        <Property>
+            <Name>nav.query_user.econ_data</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Society &amp; Economy</Value>
+            <Value disabled="false">社会经济信息</Value>
+        </Property>
+        <Property>
+            <Name>nav.query_user.agri_data</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Products</Value>
+            <Value disabled="false">主要农产品信息</Value>
+        </Property>
+        <Property>
+            <Name>nav.country_admin.policy_manage</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Policies</Value>
+            <Value disabled="false">政策信息管理</Value>
+        </Property>
+        <Property>
+            <Name>nav.country_admin.econ_data_manage</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Society &amp; Economy</Value>
+            <Value disabled="false">社会经济信息管理</Value>
+        </Property>
+        <Property>
+            <Name>nav.country_admin.agri_data_manage</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Products</Value>
+            <Value disabled="false">主要农产品信息管理</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.approval</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Information Approval</Value>
+            <Value disabled="false">信息审核</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.approval.policy</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Policy Information Approval</Value>
+            <Value disabled="false">政策信息审核</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.approval.econ</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Society &amp; Economy Information Approval</Value>
+            <Value disabled="false">社会经济信息审核</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.approval.agri</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Product Information Approval</Value>
+            <Value disabled="false">主要农产品信息审核</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.indicator</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Indicator Management</Value>
+            <Value disabled="false">指标管理</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.indicator.econ</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Society &amp; Economy Indicator Management</Value>
+            <Value disabled="false">社会经济指标管理</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.indicator.agri</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Product Indicator Management</Value>
+            <Value disabled="false">主要农产品指标管理</Value>
+        </Property>
+        <Property>
+            <Name>nav.system_admin.user</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">User Management</Value>
+            <Value disabled="false">用户管理</Value>
+        </Property>
+        <Property>
+            <Name>text.add</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Add</Value>
+            <Value disabled="false">添加</Value>
+        </Property>
+        <Property>
+            <Name>text.approve</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Approve</Value>
+            <Value disabled="false">通过</Value>
+        </Property>
+        <Property>
+            <Name>text.author</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Author</Value>
+            <Value disabled="false">作者</Value>
+        </Property>
+        <Property>
+            <Name>text.author_country</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Author country</Value>
+            <Value disabled="false">文章来源国</Value>
+        </Property>
+        <Property>
+            <Name>text.category</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Category</Value>
+            <Value disabled="false">信息分类</Value>
+        </Property>
+        <Property>
+            <Name>text.chart</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Chart</Value>
+            <Value disabled="false">图表</Value>
+        </Property>
+        <Property>
+            <Name>text.delete</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Delete</Value>
+            <Value disabled="false">删除</Value>
+        </Property>
+        <Property>
+            <Name>text.economy</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Economy</Value>
+            <Value disabled="false">经济</Value>
+        </Property>
+        <Property>
+            <Name>text.edit</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Edit</Value>
+            <Value disabled="false">编辑</Value>
+        </Property>
+        <Property>
+            <Name>text.export</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Export</Value>
+            <Value disabled="false">导出</Value>
+        </Property>
+        <Property>
+            <Name>text.import</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Import</Value>
+            <Value disabled="false">导入</Value>
+        </Property>
+        <Property>
+            <Name>text.investment</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Investment</Value>
+            <Value disabled="false">投资</Value>
+        </Property>
+        <Property>
+            <Name>text.logout</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Logout</Value>
+            <Value disabled="false">登出</Value>
+        </Property>
+        <Property>
+            <Name>text.more</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">More</Value>
+            <Value disabled="false">更多</Value>
+        </Property>
+        <Property>
+            <Name>text.original_edition</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Original edition</Value>
+            <Value disabled="false">原始版</Value>
+        </Property>
+        <Property>
+            <Name>text.population</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Population</Value>
+            <Value disabled="false">人口</Value>
+        </Property>
+        <Property>
+            <Name>text.production</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Production</Value>
+            <Value disabled="false">生产</Value>
+        </Property>
+        <Property>
+            <Name>text.publish_time</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Publish time</Value>
+            <Value disabled="false">发布时间</Value>
+        </Property>
+        <Property>
+            <Name>text.query</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Query</Value>
+            <Value disabled="false">查询</Value>
+        </Property>
+        <Property>
+            <Name>text.read_times</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Read times</Value>
+            <Value disabled="false">阅读次数</Value>
+        </Property>
+        <Property>
+            <Name>text.reject</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Reject</Value>
+            <Value disabled="false">拒绝</Value>
+        </Property>
+        <Property>
+            <Name>text.revised_edition</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Revised edition</Value>
+            <Value disabled="false">修订版</Value>
+        </Property>
+        <Property>
+            <Name>text.trade</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Trade</Value>
+            <Value disabled="false">贸易</Value>
+        </Property>
+        <Property>
+            <Name>text.trend_chart</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Trend Chart</Value>
+            <Value disabled="false">走势图</Value>
+        </Property>
+        <Property>
+            <Name>text.edition</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Edition</Value>
+            <Value disabled="false">版本号</Value>
+        </Property>
+        <Property>
+            <Name>cat.policy</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Policies</Value>
+            <Value disabled="false">政策信息</Value>
+        </Property>
+        <Property>
+            <Name>cat.econ</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Society &amp; Economy</Value>
+            <Value disabled="false">社会经济信息</Value>
+        </Property>
+        <Property>
+            <Name>cat.agri</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Products</Value>
+            <Value disabled="false">主要农产品信息</Value>
+        </Property>
+        <Property>
+            <Name>cat.dev</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Development Policies</Value>
+            <Value disabled="false">农业发展政策信息</Value>
+        </Property>
+        <Property>
+            <Name>cat.trade</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Trade Policies</Value>
+            <Value disabled="false">农业贸易政策信息</Value>
+        </Property>
+        <Property>
+            <Name>cat.tech</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Agricultural Science and Technology</Value>
+            <Value disabled="false">农业科技发展信息</Value>
+        </Property>
+        <Property>
+            <Name>cat.fish</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Fishery &amp; Aquaculture Policies</Value>
+            <Value disabled="false">渔业水产政策信息</Value>
+        </Property>
+        <Property>
+            <Name>index.latest_news</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Latest News</Value>
+            <Value disabled="false">最新信息</Value>
+        </Property>
+        <Property>
+            <Name>policy_detail.title_font</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">font-family: 'Times New Roman'; font-size: 28px;</Value>
+            <Value disabled="false">font-family: 黑体; font-size: 20px;</Value>
+        </Property>
+        <Property>
+            <Name>agri_data_approval.edition_comparison</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Edition Comparison</Value>
+            <Value disabled="false">版本比较</Value>
+        </Property>
+        <Property>
+            <Name>temp.policy_title</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Poor students getting better nutrition</Value>
+            <Value disabled="false">农业部办公厅关于印发促进草牧业发展指导意见的通知</Value>
+        </Property>
+        <Property>
+            <Name>temp.policy_title_short</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Poor students getting better ...</Value>
+            <Value disabled="false">农业部办公厅关于印发促进草牧业发...</Value>
+        </Property>
+        <Property>
+            <Name>temp.policy_author</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Alice</Value>
+            <Value disabled="false">张三</Value>
+        </Property>
+        <Property>
+            <Name>temp.policy_abstract</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">More than 33.6 million students living in poverty have become healthier overall as a result of government subsidized meals, but improved food availability and safety remain top ...</Value>
+            <Value disabled="false">国家对草牧业发展高度重视。2014年10月，汪洋副总理专题听取农业部汇报，明确了今后一个时期草牧业的发展思路和重点。2015年，农业部将加快草牧业发展作为重点课题专题研究，...</Value>
+        </Property>
+        <Property>
+            <Name>temp.agri_data_approval.desc_1</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Importing latest agricultural product data in 2016.</Value>
+            <Value disabled="false">导入2016年最新农产品数据。</Value>
+        </Property>
+        <Property>
+            <Name>temp.agri_data_approval.desc_2</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Updating agricultural product price data.</Value>
+            <Value disabled="false">更新了部分品种错误的农产品价格数据。</Value>
+        </Property>
+        <Property>
+            <Name>temp.agri_data_approval.category</Name>
+            <Disabled>false</Disabled>
+            <MultiLine>false</MultiLine>
+            <Value disabled="false">Survey of cereals production</Value>
+            <Value disabled="false">谷物生产概况</Value>
+        </Property>
+    </Records>
+</MultiProperties>
