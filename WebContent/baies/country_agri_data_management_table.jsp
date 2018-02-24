@@ -294,7 +294,7 @@ $(document).ready(function() {
 	$('#export_button').jqxButton({
 		width: '75px', height: '35px', theme: '<%=jqx_theme %>'
 	});
-    $('#export_button').on('click', function () { $("#data_grid").jqxGrid('exportdata', 'xls', '农业数据');});
+    $('#export_button').on('click', function () { $("#data_grid").jqxGrid('exportdata', 'csv', '农业数据');});
 
 
 	var grid_edited_cells = new Array();

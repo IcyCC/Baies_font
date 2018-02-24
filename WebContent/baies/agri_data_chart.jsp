@@ -216,7 +216,7 @@ $(document).ready(function() {
 		width: '100px', height: '47px', theme: '<%=jqx_theme %>'
 	});
 
-    $('#export_button').on('click', function () { $("#data_grid").jqxGrid('exportdata', 'xls', '农业数据');});
+    $('#export_button').on('click', function () { $("#data_grid").jqxGrid('exportdata', 'csv', '农业数据');});
 
     var data_source= [];
     var group_source=[];
