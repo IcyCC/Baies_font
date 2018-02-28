@@ -57,6 +57,8 @@ $(document).ready(function() {
                 datarow['id'] = resp.data[index].id
                 datarow['email'] = resp.data[index].email
                 datarow['country'] = resp.data[index].country.<fmt:message key="data.field" />
+				datarow['country_id'] = resp.data[index].country.id
+                datarow['role_id'] = resp.data[index].role.id
 				datarow['name'] = resp.data[index].username
 				datarow['role'] = resp.data[index].role.name
 				datarow['operation'] = $(row).find('li:nth-child(8)').html()
@@ -105,7 +107,8 @@ $(document).ready(function() {
 			             {name: 'name', type: 'string'},
 			             {name: 'email', type: 'string'},
 			             {name: 'country', type: 'string'},
-			             // {name: 'create_time', type: 'string'},
+				         {name: 'country_id', type: 'number'},
+				         {name: 'role_id', type: 'number'},
 			             // {name: 'last_login_time', type: 'string'},
 			             {name: 'role', type: 'string'},
 			             {name: 'operation', type: 'string'}],
@@ -208,7 +211,11 @@ $(document).ready(function() {
             $('#edit_content_editor').val($('<div />').html($('#editor_content').html()).text());
             $('#edit_window').jqxWindow('open');
 
-
+            $('#email_input').val(user.email);
+            $('#name_input').val(user.name);
+			$('#country_input').val(user.country_id);
+            $('#role_input').val(user.role_id);
+            $('#password_input').val();
             $('#edit_window_ok_button').one('click', function (event) {
                 console.log(user)
                 var post_data = {
