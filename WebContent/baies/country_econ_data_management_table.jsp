@@ -257,11 +257,37 @@ $(document).ready(function() {
 	});
 	
 	$('#import_button').on('click', function() {
-		$('#dialog_window_content').html('<table><tr><td>请选择文件:</td><td><input type="file"></td></tr>'
+		$('#dialog_window_content').html('<table><tr><td>请选择文件:</td><td><input type="file" id="file-uploader"></td></tr>'
 				+ '<tr><td>请输入版本说明:</td><td><input type="text"></td></tr></table>');
+
+		$('#file-uploader').on('change', function (event) {
+
+        })
 
 		$('#dialog_window').one('close', function(event) {
 			if(event.args.dialogResult.OK) {
+				var file = $('#file-uploader').get(0).files[0];
+                var fm = new FormData();
+                fm.append('file', file);
+
+                $.ajax({
+                    async: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    processData: false,
+                    url: host+"/quantify/socioeconomic_facts/batch",
+                    method: "POST",
+                    data: fm,
+                    success: function (resp) {
+                        console.log(resp);
+                        $('#message_notification_content').html('修订版本已保存。');
+                        $('#message_notification').jqxNotification('open');
+                        window.location.reload();
+                    }
+                })
+
                 $('#message_notification_content').html('文件已导入。');
                 $('#message_notification').jqxNotification('open');
             }
