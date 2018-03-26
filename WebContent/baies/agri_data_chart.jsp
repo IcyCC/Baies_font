@@ -370,9 +370,36 @@ $(document).ready(function() {
                 }
 
                 for (var conuntry_i in old_query_args.country_ids) {
-                    var country = country_data[conuntry_i]
-                    group_source.push({dataField: country.<fmt:message key="data.field" />, displayText: country.<fmt:message key="data.field" />, symbolType: 'circle'})
+                    var country = findArrayByValue(country_data, old_query_args.country_id[conuntry_i], function (x, y) {
+                        if (x.id === y) {
+                            return true
+                        }
+                        return false
+                    })
 
+                    for (var kind_i in old_query_args.kind_ids) {
+                        var kind = findArrayByValue(kind_data, old_query_args.kind_ids[kind_i], function (x, y) {
+                            if (x.id === y) {
+                                return true
+                            }
+                            return false
+                        })
+                        for (var index_i in old_query_args.index_id) {
+                            var index = findArrayByValue(kind_data, old_query_args.kind_ids[index_i], function (x, y) {
+                                if (x.id === y) {
+                                    return true
+                                }
+                                return false
+                            })
+                            group_source.push({
+                                dataField: '' + country.id + kind.id + index.id,
+                                displayText: country.<fmt:message key="data.field" />+kind.<fmt:message key="data.field" /> + index.<fmt:message key="data.field" />,
+                                symbolType: 'circle'
+                            })
+
+                        }
+
+                    }
                 }
 
                 for (var data_i in resp.data) {
@@ -383,7 +410,7 @@ $(document).ready(function() {
 
 						for (var source_i in data_source) {
 					        if (data_source[source_i].time === point.x) {
-					            data_source[source_i][data.country.<fmt:message key="data.field" />] = point.y
+					            data_source[source_i]['' + data.country.id + data.kind.id + data.index.id] = point.y
 								break
 							}
 						}

@@ -295,31 +295,6 @@ $(document).ready(function() {
 					group_source.push({dataField: country.<fmt:message key="data.field" />, displayText: country.<fmt:message key="data.field" />, symbolType: 'circle'})
 				}
 
-                for (var index_i in resp.data) {
-                    var index = resp.data[index_i].index
-					console.log("获取idnex", index)
-					chart_title = index.<fmt:message key="data.field" /> +"数据"
-					var same_index_series = resp.data[index_i].series
-                    console.log("获取same_idnex", same_index_series)
-                    for (var same_country_series_i in same_index_series) {
-                        var same_country_series = same_index_series[same_country_series_i]
-						var country = same_country_series.country
-						var series = same_country_series.series
-                        console.log("获取same_COUNTRY", same_country_series)
-						for (var data_i in series) {
-                            var data = series[data_i]
-							var line = findArrayByValue(data_source,data.x,
-								function (x,y) {
-								if (x.time === y) {
-								    return true
-								}
-								return false
-                            })
-							line[country.<fmt:message key="data.field" />] = data.y
-						}
-					}
-
-                }
                 console.log('local',data_source)
                 $('#data_chart').jqxChart("refresh")
             }
