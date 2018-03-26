@@ -273,6 +273,36 @@ $(document).ready(function() {
         console.log('qu', query_args)
     });
 
+    var checked_variable_list_func = function () {
+
+        $('#cat_tree').jqxTree('selectItem',$("#cat_tree").find('li:eq(0)')[0])
+
+        // for (var index_id_i in old_query_args.index_ids) {
+        //    var index_id = old_query_args.index_ids[index_id_i]
+        // 	query_args.index_ids.push(index_id)
+        // }
+        console.log("清空")
+        query_args.country_ids.length = 0
+        for (var country_id_i in old_query_args.country_ids) {
+            var country_id = old_query_args.country_ids[country_id_i]
+            $("#location_list").jqxDropDownList('checkItem',  $("#location_list").jqxDropDownList('getItemByValue',  country_id));
+            $("#location_list").jqxDropDownList('selectItem',  $("#location_list").jqxDropDownList('getItemByValue',  country_id));
+
+        }
+
+        for (var index_id_i in old_query_args.index_ids) {
+            var index_id = old_query_args.country_ids[index_id_i]
+
+            $("#variable_list").jqxDropDownList('checkItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
+            $("#variable_list").jqxDropDownList('selectItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
+
+        }
+
+        $('#time_slider').jqxSlider('setValue', [old_query_args.start_time, old_query_args.end_time]);
+
+
+    }()
+
     var tmp = function init_data_columns () {
 
         $.ajax({
@@ -290,12 +320,47 @@ $(document).ready(function() {
                     data_source.push({time:cur})
 				}
 
-				for (var conuntry_i in old_query_args.country_ids) {
-                    var country = country_data[conuntry_i]
-					group_source.push({dataField: country.<fmt:message key="data.field" />, displayText: country.<fmt:message key="data.field" />, symbolType: 'circle'})
-				}
+                for (var conuntry_i in old_query_args.country_ids) {
+                    var country = findArrayByValue(country_data, old_query_args.country_ids[conuntry_i], function (x, y) {
+                        if (x.id === y) {
+                            return true
+                        }
+                        return false
+                    })
+                    console.log('country', country)
 
+					for (var index_i in old_query_args.index_ids) {
+						var index = findArrayByValue(index_data, old_query_args.index_ids[index_i], function (x, y) {
+							if (x.id === y) {
+								return true
+							}
+							return false
+						})
+
+						console.log('index', index)
+						group_source.push({
+							dataField: '' + country.id + index.id,
+							displayText: country.<fmt:message key="data.field" />+ index.<fmt:message key="data.field" />,
+							symbolType: 'circle'
+						})
+					}
+                }
                 console.log('local',data_source)
+
+                for (var data_i in resp.data) {
+                    var data = resp.data[data_i]
+                    console.log("获得数据",data)
+                    for (var point_i in data.series) {
+                        var point = data.series[point_i]
+
+                        for (var source_i in data_source) {
+                            if (data_source[source_i].time === point.x) {
+                                data_source[source_i]['' + data.country.id + data.index.id] = point.y
+                                break
+                            }
+                        }
+                    }
+                }
                 $('#data_chart').jqxChart("refresh")
             }
         });

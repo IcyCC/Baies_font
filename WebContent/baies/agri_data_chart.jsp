@@ -104,7 +104,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: true,
+        async: false,
         success: function (resp) {
             for (var index in resp.data) {
                 country_data.push(resp.data[index])
@@ -124,7 +124,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: true,
+        async: false,
         success: function (resp) {
             for (var index in resp.data) {
                 kind_data.push(resp.data[index])
@@ -368,14 +368,16 @@ $(document).ready(function() {
                 for (var cur = old_query_args.start_time;cur<= old_query_args.end_time; cur++) {
                     data_source.push({time:cur})
                 }
+                console.log('time')
 
                 for (var conuntry_i in old_query_args.country_ids) {
-                    var country = findArrayByValue(country_data, old_query_args.country_id[conuntry_i], function (x, y) {
+                    var country = findArrayByValue(country_data, old_query_args.country_ids[conuntry_i], function (x, y) {
                         if (x.id === y) {
                             return true
                         }
                         return false
                     })
+                    console.log('country', country)
 
                     for (var kind_i in old_query_args.kind_ids) {
                         var kind = findArrayByValue(kind_data, old_query_args.kind_ids[kind_i], function (x, y) {
@@ -384,24 +386,27 @@ $(document).ready(function() {
                             }
                             return false
                         })
-                        for (var index_i in old_query_args.index_id) {
-                            var index = findArrayByValue(kind_data, old_query_args.kind_ids[index_i], function (x, y) {
+
+                        console.log('kind', kind)
+                        for (var index_i in old_query_args.index_ids) {
+                            var index = findArrayByValue(index_data, old_query_args.index_ids[index_i], function (x, y) {
                                 if (x.id === y) {
                                     return true
                                 }
                                 return false
                             })
+
+                            console.log('index', index)
                             group_source.push({
                                 dataField: '' + country.id + kind.id + index.id,
                                 displayText: country.<fmt:message key="data.field" />+kind.<fmt:message key="data.field" /> + index.<fmt:message key="data.field" />,
                                 symbolType: 'circle'
                             })
-
                         }
 
                     }
                 }
-
+                console.log('group', group_source)
                 for (var data_i in resp.data) {
 					var data = resp.data[data_i]
 					console.log("获得数据",data)
