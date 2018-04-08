@@ -39,6 +39,16 @@ findArrayByValue = function (ary, value,func) {
     return {}
 }
 
+findIndexByValue = function (ary, value,func) {
+    for (var index in ary) {
+        if (func(ary[index], value) === true) {
+            console.log("compare",value)
+            return index
+        }
+    }
+    return -1
+}
+
 var parseParam=function(param){
     var paramStr="";
     for (var key in param) {
@@ -463,7 +473,14 @@ $(document).ready(function() {
 
     var checked_variable_list_func = function () {
 
-        $('#cat_tree').jqxTree('selectItem',$("#cat_tree").find('li:eq(1)')[0])
+        $('#cat_tree').jqxTree('selectItem',$("#cat_tree").find('li:eq('+findIndexByValue(table_data,
+            old_query_args.
+                table_id, function (x,y) {
+                if (x["id"] === y) {
+                    return true
+                }
+                return false
+            })+')')[0])
 
         // for (var index_id_i in old_query_args.index_ids) {
         //    var index_id = old_query_args.index_ids[index_id_i]
@@ -479,7 +496,7 @@ $(document).ready(function() {
         }
 
         for (var index_id_i in old_query_args.index_ids) {
-            var index_id = old_query_args.country_ids[index_id_i]
+            var index_id = old_query_args.index_ids[index_id_i]
 
             $("#variable_list").jqxDropDownList('checkItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
             $("#variable_list").jqxDropDownList('selectItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));

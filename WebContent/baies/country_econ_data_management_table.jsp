@@ -42,6 +42,16 @@ findArrayByValue = function (ary, value,func) {
 	return {}
 }
 
+findIndexByValue = function (ary, value,func) {
+    for (var index in ary) {
+        if (func(ary[index], value) === true) {
+            console.log("compare",value)
+            return index
+        }
+    }
+    return -1
+}
+
 var parseParam=function(param){
     var paramStr="";
     for (var key in param) {
@@ -283,7 +293,6 @@ $(document).ready(function() {
             });
         });
 
-        })
 
 
 		$('#dialog_window').one('close', function(event) {
@@ -426,7 +435,14 @@ $(document).ready(function() {
 
 
     var checked_variable_list_func = function () {
-        $('#cat_tree').jqxTree('selectItem',$("#cat_tree").find('li:first')[0])
+        $('#cat_tree').jqxTree('selectItem',$("#cat_tree").find('li:eq('+findIndexByValue(table_data,
+            old_query_args.
+                table_id, function (x,y) {
+                if (x["id"] === y) {
+                    return true
+                }
+                return false
+            })+')')[0])
 
         // for (var index_id_i in old_query_args.index_ids) {
         //     var index_id = old_query_args.index_ids[index_id_i]
@@ -443,7 +459,7 @@ $(document).ready(function() {
         }
 
         for (var index_id_i in old_query_args.index_ids) {
-            var index_id = old_query_args.country_ids[index_id_i]
+            var index_id = old_query_args.index_ids[index_id_i]
             $("#variable_list").jqxDropDownList('checkItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
             $("#variable_list").jqxDropDownList('selectItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
 
@@ -455,6 +471,7 @@ $(document).ready(function() {
 
 
     var tmp = function init_data_columns () {
+
         for (var year = old_query_args.start_time;year<=old_query_args.end_time; year++){
             data_fields.push({name: 'y'+year, type: 'object', map: 'y'+year.toString()+'>value'} );
             data_fields.push({name: 'y'+year+'_id', type: 'object', map: 'y'+year.toString()+'>id'} );
