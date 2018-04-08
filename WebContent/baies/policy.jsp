@@ -35,7 +35,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        url: host+"/qualitative/Post",
+        url: host+"/qualitative/Post?show=true",
         data: {},
         success: function (result) {
             var datas = result.data
@@ -46,6 +46,7 @@ $(document).ready(function() {
                 datarow['title'] = value.title;
                 datarow['body'] = value.body;
                 datarow['kind_id'] = value.kind_id;
+                datarow['img_url'] = "<img width='50px' height='30px' src="+ value.img_url +" >"+"</img>"
                 // console.log(datarow)
 
                 switch(datarow['kind_id'])
@@ -74,7 +75,8 @@ $(document).ready(function() {
         datafields: [{name:'id', type:'number'},
             {name: 'title', type: 'string'},
             {name: 'body', type:'string'},
-            {name: 'kind_id', type:'string'}]
+            {name: 'kind_id', type:'string'},
+            {name: 'img_url', type:'string'}]
     };
 
     var dataAdapter_kind_1 = new $.jqx.dataAdapter(source_kind_1);
@@ -88,6 +90,7 @@ $(document).ready(function() {
 		pagesize: 5,
 		columns: [
 		    {text: '标题', dataField: 'title'},
+            {text: '封面', dataField:'img_url'},
 		    {text: '内容', dataField: 'body'}
 		    ]
     };
@@ -98,7 +101,8 @@ $(document).ready(function() {
         datafields: [{name:'id', type:'number'},
             {name: 'title', type: 'string'},
             {name: 'body', type:'string'},
-            {name: 'kind_id', type:'string'}]
+            {name: 'kind_id', type:'string'},
+            {name: 'img_url', type:'string'}]
     };
     var dataAdapter_kind_2 = new $.jqx.dataAdapter(source_kind_2);
     var settings_kind_2 = {
@@ -111,7 +115,9 @@ $(document).ready(function() {
 		pagesize: 5,
 		columns: [
 		    {text: '标题', dataField: 'title'},
+            {text: '封面', dataField:'img_url'},
 		    {text: '内容', dataField: 'body'}
+
 		    ]
     };
 
@@ -121,7 +127,8 @@ $(document).ready(function() {
         datafields: [{name:'id', type:'number'},
             {name: 'title', type: 'string'},
             {name: 'body', type:'string'},
-            {name: 'kind_id', type:'string'}]
+            {name: 'kind_id', type:'string'},
+            {name: 'img_url', type:'string'}]
     };
     var dataAdapter_kind_3 = new $.jqx.dataAdapter(source_kind_3);
     var settings_kind_3 = {
@@ -134,6 +141,7 @@ $(document).ready(function() {
 		pagesize: 5,
 		columns: [
 		    {text: '标题', dataField: 'title'},
+            {text: '封面', dataField:'img_url'},
 		    {text: '内容', dataField: 'body'}
 		    ]
     };
@@ -144,7 +152,8 @@ $(document).ready(function() {
         datafields: [{name:'id', type:'number'},
             {name: 'title', type: 'string'},
             {name: 'body', type:'string'},
-            {name: 'kind_id', type:'string'}]
+            {name: 'kind_id', type:'string'},
+            {name: 'img_url', type:'string'}]
     };
     var dataAdapter_kind_4 = new $.jqx.dataAdapter(source_kind_4);
     var settings_kind_4 = {
@@ -157,7 +166,9 @@ $(document).ready(function() {
 		pagesize: 5,
 		columns: [
 		    {text: '标题', dataField: 'title'},
+            {text: '封面', dataField:'img_url'},
 		    {text: '内容', dataField: 'body'}
+
 		    ]
     };
 

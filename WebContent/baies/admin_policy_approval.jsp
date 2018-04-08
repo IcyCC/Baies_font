@@ -27,7 +27,9 @@ var data = [];
 var source = {
     localdata: data,
     datatype: 'array',
-    datafields: [{name: 'picture', type: 'string'},
+    datafields: [
+        {name: 'id', type: 'number'},
+        {name: 'picture', type: 'string'},
         {name: 'title', type: 'string'},
         {name: 'country', type: 'string'},
         {name: 'author', type: 'string'},
@@ -35,7 +37,8 @@ var source = {
         {name: 'modify_time', type: 'string'},
         {name: 'operation', type: 'string'},
         {name: 'body', type:'string'},
-        {name: 'kind_id', type:'string'}],
+        {name: 'kind_id', type:'string'},
+		{name: 'status', type:'string'}],
 };
 var dataAdapter = new $.jqx.dataAdapter(source);
 var settings = {
@@ -53,6 +56,7 @@ var settings = {
         {text: '<fmt:message key="common.dimension.country" />', dataField: 'country', width: 80, align: 'center', cellsalign: 'center'},
         {text: '<fmt:message key="text.author" />', dataField: 'author', width: 80, align: 'center', cellsalign: 'center'},
         {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
+        {text: '是否过审', dataField: 'status', width: 50, align: 'center', cellsalign: 'center'},
         // {text: '修改时间', dataField: 'modify_time', width: 100, align: 'center', cellsalign: 'center'},
         {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
     ]
@@ -160,17 +164,7 @@ $(document).ready(function() {
 		theme: '<%=jqx_theme %>'
 	});
 
-	
-	$('.approve_buttons').on('click', function() {
-		$('#dialog_window_content').html('是否通过本信息？');
-		$('#dialog_window').one('close', function(event) {
-			if(event.args.dialogResult.OK) {
-				$('#message_notification_content').html('信息已通过。');
-				$('#message_notification').jqxNotification('open');
-			}
-		});
-		$('#dialog_window').jqxWindow('open');
-	});
+
 
 	$('.reject_buttons').on('click', function() {
 		$('#dialog_window_content').html('是否拒绝本信息？');
@@ -222,6 +216,34 @@ $(document).ready(function() {
 
         var post = args.row.bounddata;
         console.log(args)
+
+
+        $('.approve_buttons').one('click', function() {
+            $('#dialog_window_content').html('是否通过本信息？');
+            $('#dialog_window').one('close', function(event) {
+                if(event.args.dialogResult.OK) {
+
+                    $.ajax({
+                        type:'PUT',
+                        url:host+'/qualitative/Post/'+post.id,
+                        data: {show: true},
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        crossDomain: true,
+                        async: true,
+                        success: function (resp) {
+                            $('#message_notification_content').html('信息已通过。');
+                            $('#message_notification').jqxNotification('open');
+                            window.location.reload()
+                        }
+                    });
+
+
+                }
+            });
+            $('#dialog_window').jqxWindow('open');
+        });
 
 
         $('.detail_buttons').on('click', function() {

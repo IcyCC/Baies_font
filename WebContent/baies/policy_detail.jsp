@@ -40,6 +40,7 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
     			$(".author").text(data[0].user.username)
     			$(".publish_time").text(data[0].timestamp)
     			$(".content").html(data[0].body)
+			   $(".cover").html("<center><img src="+ data[0].img_url +" >"+"</img></center>")
     			var kind_id = data[0].kind_id -1
                console.log(kind_id)
                $("#cat_tabs").find('li').removeClass("jqx-tabs-title-selected-top jqx-fill-state-pressed jqx-fill-state-pressed-arctic jqx-tabs-title-selected-top-arctic")
@@ -152,6 +153,9 @@ $(document).ready(function() {
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<fmt:message key="text.publish_time" />:<span class="publish_time"></span>
 			<%--<fmt:message key="text.publish_time" />: 2016-6-23--%>
+		</div>
+		<div class="cover">
+
 		</div>
 		<div style="width: 788px; padding: 20px 95px 20px 95px;" class="content">
 

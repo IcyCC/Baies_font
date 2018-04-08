@@ -281,23 +281,44 @@ $(document).ready(function() {
 	
 	$('#import_button').on('click', function() {
 		$('#dialog_window_content').html('<table><tr><td>请选择文件:</td><td><input type="file" id="file-uploader"></td></tr>'
-				+ '<tr><td>请输入版本说明:</td><td><input type="text"></td></tr></table>');
+				+ '<tr><td>请输入版本说明:</td><td><input id="note-input" type="text"></td></tr></table>');
+
+		var upload_url = ''
+        $('#file-uploader').on('change', function (event) {
+
+            var formData = new FormData()
+            formData.append('file',$('#file-uploader')[0].files[0])
+            $.ajax({
+                url: host + "/user/upload",
+                type: 'POST',
+                cache: false,
+                async: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType:"json",
+                beforeSend: function(){
+                },
+                success : function(resp) {
+                    console.log(resp)
+                    upload_url = resp.data
+                }
+            });
+        });
 		$('#dialog_window').one('close', function(event) {
             if(event.args.dialogResult.OK) {
-                var file = $('#file-uploader').get(0).files[0];
-                var fm = new FormData();
-                fm.append('file', file);
-
+                var note = $("note-input").input()
+                var table_id = query_args.table_id
                 $.ajax({
                     async: true,
                     xhrFields: {
                         withCredentials: true
                     },
                     crossDomain: true,
-                    processData: false,
-                    url: host+"/quantify/socioeconomic_facts/batch",
+                    processData: true,
+                    url: host+"/quantify/socioeconomic_excel",
                     method: "POST",
-                    data: fm,
+                    data:  {filename:upload_url.split('/')[3], note:note, table_id:table_id, field:'<fmt:message key="data.field" />'},
                     success: function (resp) {
                         console.log(resp);
                         $('#message_notification_content').html('修订版本已保存。');

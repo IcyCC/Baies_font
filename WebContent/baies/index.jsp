@@ -172,7 +172,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        url: host+"/qualitative/Post/simple",
+        url: host+"/qualitative/Post/simple?show=true",
         data: {},
         success: function (result) {
             console.log(result)

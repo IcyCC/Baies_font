@@ -28,6 +28,9 @@ $(document).ready(function() {
 	var data_kind_2 = [];
 	var data_kind_3 = [];
 	var data_kind_4 = [];
+
+
+    var upload_url = ''
 	// for (var i = 0; i < 100; i++) {
 	// 	var row = rows[0];
 	// 	var datarow = {};
@@ -129,12 +132,40 @@ $(document).ready(function() {
 					$('#edit_title_input').val('');
 					$('#edit_content_editor').val('');
 					$('#edit_window').jqxWindow('open');
+
+                    $("#cover-input-file").one("change", function(){
+                        console.log("uopload")
+						var formData = new FormData()
+						formData.append('file',$('#cover-input-file')[0].files[0])
+                        $.ajax({
+                            url: host + "/user/upload",
+                            type: 'POST',
+                            cache: false,
+                            async: false,
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            dataType:"json",
+                            beforeSend: function(){
+                            },
+                            success : function(resp) {
+                                console.log(resp)
+                                upload_url = resp.data
+                            }
+                        });
+                    });
+
                     $("#edit_window_ok_button").one('click', function(event) {
-                        var post_data = {title:"", body:"", kind_id:""}
+                        var post_data = {title:"", body:"", kind_id:"", img_url:'/'}
 
                         post_data.title = $('#edit_title_input').val();
                         post_data.body = $('#edit_content_editor').val();
                         post_data.kind_id = 1
+
+						if (post_data.img_url !== ''){
+                            post_data.img_url = host+upload_url
+						}
+
                         console.log("add a post", post_data)
                         $.ajax({
                             type:'POST',
@@ -199,8 +230,35 @@ $(document).ready(function() {
                 $('#edit_title_input').val('');
                 $('#edit_content_editor').val('');
                 $('#edit_window').jqxWindow('open');
+                $("#cover-input-file").one("change", function(){
+                    console.log("uopload")
+                    var formData = new FormData()
+                    formData.append('file',$('#cover-input-file')[0].files[0])
+                    $.ajax({
+                        url: host + "/user/upload",
+                        type: 'POST',
+                        cache: false,
+                        async: false,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        dataType:"json",
+                        beforeSend: function(){
+                        },
+                        success : function(resp) {
+                            console.log(resp)
+                            upload_url = resp.data
+                        }
+                    });
+                });
+
                 $("#edit_window_ok_button").one('click', function(event) {
-                    var post_data = {title:"", body:"", kind_id:""}
+                    var post_data = {title:"", body:"", kind_id:"", img_url:'/'}
+
+
+                    if (post_data.img_url !== ''){
+                        post_data.img_url = host+upload_url
+                    }
 
                     post_data.title = $('#edit_title_input').val();
                     post_data.body = $('#edit_content_editor').val();
@@ -269,8 +327,36 @@ $(document).ready(function() {
                 $('#edit_title_input').val('');
                 $('#edit_content_editor').val('');
                 $('#edit_window').jqxWindow('open');
+                $("#cover-input-file").one("change", function(){
+                    console.log("uopload")
+                    var formData = new FormData()
+                    formData.append('file',$('#cover-input-file')[0].files[0])
+                    $.ajax({
+                        url: host + "/user/upload",
+                        type: 'POST',
+                        cache: false,
+                        async: false,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        dataType:"json",
+                        beforeSend: function(){
+                        },
+                        success : function(resp) {
+                            console.log(resp)
+                            upload_url = resp.data
+                        }
+                    });
+                });
+
                 $("#edit_window_ok_button").one('click', function(event) {
-                    var post_data = {title:"", body:"", kind_id:""}
+                    var post_data = {title:"", body:"", kind_id:"", img_url:'/'}
+
+
+                    if (post_data.img_url !== ''){
+                        post_data.img_url = host+upload_url
+                    }
+
 
                     post_data.title = $('#edit_title_input').val();
                     post_data.body = $('#edit_content_editor').val();
@@ -396,7 +482,7 @@ $(document).ready(function() {
 	});
 	
 	$('#edit_window').jqxWindow({
-		width: 700, height: 550, resizable: false,  isModal: true, autoOpen: false,
+		width: 700, height: 580, resizable: false,  isModal: true, autoOpen: false,
 		okButton: $("#edit_window_ok_button"), cancelButton: $("#edit_window_cancel_button"),
 		modalOpacity: 0.3, theme: '<%=jqx_theme %>'
 	});
@@ -424,6 +510,7 @@ $(document).ready(function() {
 	});
 
 
+
     $("#news_grid_1").on("cellclick", function (event)
     {
         // event arguments.
@@ -432,18 +519,50 @@ $(document).ready(function() {
         var post = args.row.bounddata;
         console.log(args)
 
+
         $('.edit_buttons').one('click', function() {
             $('#edit_title_input').val(post.title);
             $('#edit_content_editor').val($('<div />').html(post.body).text());
             $('#edit_window').jqxWindow('open');
+
+
+            $("#cover-input-file").one("change", function(){
+				console.log("uopload")
+                var formData = new FormData()
+                formData.append('file',$('#cover-input-file')[0].files[0])
+                $.ajax({
+                    url: host + "/user/upload",
+                    type: 'POST',
+                    cache: false,
+                    async: false,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType:"json",
+                    beforeSend: function(){
+                    },
+                    success : function(resp) {
+                        console.log(resp)
+						upload_url = resp.data
+                    }
+                });
+            });
+
 
             $('#edit_window_ok_button').one('click', function (event) {
                 console.log(post)
                 var post_data = {
                     body: "",
                     kind_id: 1,
-                    title: ""
+                    title: "",
+					img_url: '/'
                 };
+
+                if (upload_url !== '') {
+                    post_data.img_url = host + upload_url
+				}
+
+
 
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
@@ -511,6 +630,29 @@ $(document).ready(function() {
             $('#edit_content_editor').val($('<div />').html(post.body).text());
             $('#edit_window').jqxWindow('open');
 
+            $("#cover-input-file").one("change", function(){
+                console.log("uopload")
+                var formData = new FormData()
+                formData.append('file',$('#cover-input-file')[0].files[0])
+                $.ajax({
+                    url: host + "/user/upload",
+                    type: 'POST',
+                    cache: false,
+                    async: false,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType:"json",
+                    beforeSend: function(){
+                    },
+                    success : function(resp) {
+                        console.log(resp)
+                        upload_url = resp.data
+                    }
+                });
+            });
+
+
             $('#edit_window_ok_button').one('click', function (event) {
                 console.log(post)
                 var post_data = {
@@ -518,6 +660,10 @@ $(document).ready(function() {
                     kind_id: 2,
                     title: ""
                 };
+
+                if (upload_url !== '') {
+                    post_data.img_url = host + upload_url
+                }
 
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
@@ -580,6 +726,29 @@ $(document).ready(function() {
         var post = args.row.bounddata;
         console.log(args)
 
+        $("#cover-input-file").one("change", function(){
+            console.log("uopload")
+            var formData = new FormData()
+            formData.append('file',$('#cover-input-file')[0].files[0])
+            $.ajax({
+                url: host + "/user/upload",
+                type: 'POST',
+                cache: false,
+                async: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType:"json",
+                beforeSend: function(){
+                },
+                success : function(resp) {
+                    console.log(resp)
+                    upload_url = resp.data
+                }
+            });
+        });
+
+
         $('.edit_buttons').one('click', function() {
             $('#edit_title_input').val(post.title);
             $('#edit_content_editor').val($('<div />').html(post.body).text());
@@ -590,9 +759,12 @@ $(document).ready(function() {
                 var post_data = {
                     body: "",
                     kind_id: 3,
-                    title: ""
+                    title: "",
+					img_url: '/'
                 };
-
+                if (upload_url !== '') {
+                    post_data.img_url = host + upload_url
+                }
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
 
@@ -654,19 +826,46 @@ $(document).ready(function() {
         var post = args.row.bounddata;
         console.log(args)
 
+
         $('.edit_buttons').one('click', function() {
             $('#edit_title_input').val(post.title);
             $('#edit_content_editor').val($('<div />').html(post.body).text());
             $('#edit_window').jqxWindow('open');
 
+            $("#cover-input-file").one("change", function(){
+                console.log("uopload")
+                var formData = new FormData()
+                formData.append('file',$('#cover-input-file')[0].files[0])
+                $.ajax({
+                    url: host + "/user/upload",
+                    type: 'POST',
+                    cache: false,
+                    async: false,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType:"json",
+                    beforeSend: function(){
+                    },
+                    success : function(resp) {
+                        console.log(resp)
+                        upload_url = resp.data
+                    }
+                });
+            });
+
+
             $('#edit_window_ok_button').one('click', function (event) {
                 console.log(post)
                 var post_data = {
                     body: "",
-                    kind_id: 4,
-                    title: ""
+                    kind_id: 3,
+                    title: "",
+                    img_url: '/'
                 };
-
+                if (upload_url !== '') {
+                    post_data.img_url = host + upload_url
+                }
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
 
@@ -816,9 +1015,10 @@ $(document).ready(function() {
 	<div>录入信息</div>
 	<div style="overflow: hidden; padding: 20px;">
 		<div class="left" style="width: 50px;">标题:</div>
-		<input class="left" type="text" id="edit_title_input">
+		<span>上传封面: <input class="left" type="text" id="edit_title_input"></span>
 		<div class="clear"></div>
 		<div class="margin_10"></div>
+		<input type="file" id="cover-input-file" name="file" accept="image/*" style="height:40px">
 		<textarea id="edit_content_editor"></textarea>
 		<div class="right margin_10">
 			<input type="button" id="edit_window_ok_button" value="保存">
