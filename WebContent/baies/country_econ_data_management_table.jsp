@@ -385,24 +385,29 @@ $(document).ready(function() {
         $("#variable_list").jqxDropDownList('render');
     });
 
-    $('#variable_list').on('select', function (event) {
-        var args = event.args;
-        console.log(args)
-        var item = $('#variable_list').jqxDropDownList('getItem', args.index);
+
+    $('#variable_list').on('checkChange', function (event) {
+        var checked = args.checked;
+        // get the item and it's label and value fields.
+        var item = args.item;
         if (item.checked === true) {
-            query_args.index_ids.push(item.id)
+            console.log("指标选择")
+            query_args.index_ids.push(item.value)
         }
         else {
+            console.log("指标删除")
             removeByValue(query_args.index_ids,item.value)
         }
         console.log('qu', query_args)
     })
 
 
-    $('#location_list').on('select', function (event) {
-        var args = event.args;
-        var item = $('#location_list').jqxDropDownList('getItem', args.index);
-        console.log("国家选择开始s",item)
+
+
+    $('#location_list').on('checkChange', function (event) {
+        var checked = args.checked;
+        // get the item and it's label and value fields.
+        var item = args.item;
 
         if (item.checked === true) {
             query_args.country_ids.push(item.value)
@@ -414,16 +419,7 @@ $(document).ready(function() {
         }
         console.log('qu', query_args)
     })
-    // var values = $('#time_slider').jqxSlider('values');
-    // query_args.start_time = values[0].toString();
-    // query_args.end_time = values[1].toString();
 
-    // $('#time_slider').on('change', function (event) {
-    //     var values = $('#time_slider').jqxSlider('values');
-    //     query_args.start_time = values[0]
-    //     query_args.end_time = values[1]
-    //     console.log('qu', query_args)
-    // });
 
     $('#time_slider').on('change', function (event) {
         var values = $('#time_slider').jqxSlider('values');
@@ -435,6 +431,9 @@ $(document).ready(function() {
 
 
     var checked_variable_list_func = function () {
+
+        // 选择变量
+
         $('#cat_tree').jqxTree('selectItem',$("#cat_tree").find('li:eq('+findIndexByValue(table_data,
             old_query_args.
                 table_id, function (x,y) {
@@ -444,28 +443,23 @@ $(document).ready(function() {
                 return false
             })+')')[0])
 
-        // for (var index_id_i in old_query_args.index_ids) {
-        //     var index_id = old_query_args.index_ids[index_id_i]
-        //     query_args.index_ids.push(index_id)
-        // }
-
         console.log("清空")
+
         query_args.country_ids.length = 0
+        query_args.index_ids.length = 0
+
+        for (var index_id_i in old_query_args.index_ids) {
+            var index_id = old_query_args.country_ids[index_id_i]
+            $("#variable_list").jqxDropDownList('checkItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
+        }
+
         for (var country_id_i in old_query_args.country_ids) {
             var country_id = old_query_args.country_ids[country_id_i]
             $("#location_list").jqxDropDownList('checkItem',  $("#location_list").jqxDropDownList('getItemByValue',  country_id));
-            $("#location_list").jqxDropDownList('selectItem',  $("#location_list").jqxDropDownList('getItemByValue',  country_id));
-
-        }
-
-        for (var index_id_i in old_query_args.index_ids) {
-            var index_id = old_query_args.index_ids[index_id_i]
-            $("#variable_list").jqxDropDownList('checkItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
-            $("#variable_list").jqxDropDownList('selectItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
-
         }
 
         $('#time_slider').jqxSlider('setValue', [old_query_args.start_time, old_query_args.end_time]);
+
 
     }()
 
