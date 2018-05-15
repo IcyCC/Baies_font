@@ -308,7 +308,7 @@ $(document).ready(function() {
         query_args.index_ids.length = 0
 
         for (var index_id_i in old_query_args.index_ids) {
-            var index_id = old_query_args.country_ids[index_id_i]
+            var index_id = old_query_args.index_ids[index_id_i]
             $("#variable_list").jqxDropDownList('checkItem',  $("#variable_list").jqxDropDownList('getItemByValue',  index_id));
         }
 

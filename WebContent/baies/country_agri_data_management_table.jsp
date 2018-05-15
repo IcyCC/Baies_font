@@ -140,7 +140,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: true,
+        async: false,
         success: function (resp) {
             for (var index in resp.data) {
                 country_data.push(resp.data[index])
@@ -160,7 +160,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: true,
+        async: false,
         success: function (resp) {
             for (var index in resp.data) {
                 kind_data.push(resp.data[index])
@@ -261,7 +261,7 @@ $(document).ready(function() {
                 console.log(post_data)
 
                 $.ajax({
-                    async: true,
+                    async: false,
                     xhrFields: {
                         withCredentials: true
                     },
@@ -320,7 +320,7 @@ $(document).ready(function() {
                 var note = $("note-input").input()
                 var table_id = query_args.table_id
                 $.ajax({
-                    async: true,
+                    async: false,
                     xhrFields: {
                         withCredentials: true
                     },
@@ -522,7 +522,7 @@ $(document).ready(function() {
                 withCredentials: true
             },
             crossDomain: true,
-            async: true,
+            async: false,
             success: function (resp) {
 
                 for (var index_id_i in old_query_args.index_ids) {
