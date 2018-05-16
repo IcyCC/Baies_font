@@ -234,8 +234,7 @@ $(document).ready(function() {
 	});
 	
 	$('#query_button').on('click', function() {
-		window.location.href='agri_data_table.jsp'+'?'+parseParam(query_args);
-		window.location.reload()
+		window.location.replace('agri_data_table.jsp'+'?'+parseParam(query_args));
 	});
 	
 	$('#chart_button').jqxButton({
@@ -243,7 +242,7 @@ $(document).ready(function() {
 	});
 	
 	$('#chart_button').on('click', function() {
-		window.location.href='agri_data_chart.jsp'+'?'+parseParam(old_query_args);;
+		window.location.replace('agri_data_chart.jsp'+'?'+parseParam(old_query_args));
 	});
 	
 	$('#export_button').jqxButton({

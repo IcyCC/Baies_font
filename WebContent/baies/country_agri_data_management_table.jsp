@@ -236,8 +236,7 @@ $(document).ready(function() {
 	});
 
     $('#query_button').on('click', function() {
-        window.location.href='country_agri_data_management_table.jsp'+'?'+parseParam(query_args);
-        window.location.reload()
+        window.location.replace('country_agri_data_management_table.jsp'+'?'+parseParam(query_args));
     });
 	
 	$('#save_button').jqxButton({

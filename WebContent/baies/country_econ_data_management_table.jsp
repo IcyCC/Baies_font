@@ -211,7 +211,7 @@ $(document).ready(function() {
 	});
 	
 	$('#query_button').on('click', function() {
-        window.location.href='country_econ_data_management_table.jsp'+'?'+ parseParam(query_args);
+        window.location.replace('country_econ_data_management_table.jsp'+'?'+ parseParam(query_args));
 	});
 	
 	$('#save_button').jqxButton({

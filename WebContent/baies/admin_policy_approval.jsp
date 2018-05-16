@@ -170,6 +170,7 @@ $(document).ready(function() {
 		$('#dialog_window_content').html('是否拒绝本信息？');
 		$('#dialog_window').one('close', function(event) {
 			if(event.args.dialogResult.OK) {
+
 				$('#message_notification_content').html('信息已拒绝。');
 				$('#message_notification').jqxNotification('open');
 			}
@@ -179,7 +180,7 @@ $(document).ready(function() {
 	
 	$('#detail_window').jqxWindow({
 		width: 700, height: 550, resizable: false,  isModal: true, autoOpen: false,
-		okButton: $("#detail_window_ok_button"), cancelButton: $("#detail_window_cancel_button"),
+			okButton: $("#detail_window_ok_button"), cancelButton: $("#detail_window_cancel_button"),
 		modalOpacity: 0.3, theme: '<%=jqx_theme %>'
 	});
 	
@@ -187,23 +188,23 @@ $(document).ready(function() {
 		width: 660, height: 420, theme: '<%=jqx_theme %>'
 	});
 	
-	$("#detail_window_ok_button").jqxButton({
-		theme: '<%=jqx_theme %>'
-	});
+	<%--$("#detail_window_ok_button").jqxButton({--%>
+		<%--theme: '<%=jqx_theme %>'--%>
+	<%--});--%>
 	
-	$("#detail_window_ok_button").on('click', function(event) {
-		$('#message_notification_content').html('信息已通过。');
-		$('#message_notification').jqxNotification('open');
-	});
-	
-	$("#detail_window_cancel_button").jqxButton({
-		theme: '<%=jqx_theme %>'
-	});
-	
-	$("#detail_window_cancel_button").on('click', function(event) {
-		$('#message_notification_content').html('信息已拒绝。');
-		$('#message_notification').jqxNotification('open');
-	});
+	<%--$("#detail_window_ok_button").on('click', function(event) {--%>
+		<%--$('#message_notification_content').html('信息已通过。');--%>
+		<%--$('#message_notification').jqxNotification('open');--%>
+	<%--});--%>
+	<%----%>
+	<%--$("#detail_window_cancel_button").jqxButton({--%>
+		<%--theme: '<%=jqx_theme %>'--%>
+	<%--});--%>
+	<%----%>
+	<%--$("#detail_window_cancel_button").on('click', function(event) {--%>
+		<%--$('#message_notification_content').html('信息已拒绝。');--%>
+		<%--$('#message_notification').jqxNotification('open');--%>
+	<%--});--%>
 
 	$('#message_notification').jqxNotification({
 		width: 'auto', position: "bottom-right", opacity: 0.9, template: 'success', theme: '<%=jqx_theme %>'
@@ -345,10 +346,10 @@ $(document).ready(function() {
 		<div class="clear"></div>
 		<div class="margin_10"></div>
 		<div id="detail_content_panel"></div>
-		<div class="right margin_10">
-			<input type="button" id="detail_window_ok_button" value="通过">
-			<input type="button" id="detail_window_cancel_button" value="拒绝">
-		</div>
+		<%--<div class="right margin_10">--%>
+			<%--<input type="button" id="detail_window_ok_button" value="通过">--%>
+			<%--<input type="button" id="detail_window_cancel_button" value="拒绝">--%>
+		<%--</div>--%>
 		<div class="clear"></div>
 	</div>
 </div>

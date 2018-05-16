@@ -176,7 +176,7 @@ $(document).ready(function() {
 	});
 	
 	$('#query_button').on('click', function() {
-		window.location.href='econ_data_table.jsp'+old_query_args;
+		window.location.replace('econ_data_table.jsp'+'?'+parseParam(query_args));
 	});
 	
 	$('#chart_button').jqxButton({
@@ -324,7 +324,7 @@ $(document).ready(function() {
                 withCredentials: true
             },
             crossDomain: true,
-            async: true,
+            async: false,
             success: function (resp) {
 
                 for (var cur = old_query_args.start_time;cur<= old_query_args.end_time; cur++) {
