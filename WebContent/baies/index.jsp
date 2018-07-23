@@ -29,8 +29,128 @@ if(jqx_nav_theme == null) {
 
 page_id = 0;
 
+var arg_query_args = {
+    country_ids: [1,2],
+    end_time: 2018,
+    start_time: 2014,
+    table_id: 2,
+    kind_ids: [1,2,3,4],
+    index_ids: [3,4]
+}
+
+var econ_query_args = {
+    country_ids: [1,3,2],
+	table_id: 1,
+	index_ids: [2,3,1],
+	start_time: 2013,
+	end_time: 2018
+};
+
+
+var country_data = [];
+var arg_index_data = [];
+var arg_kind_data = [];
+var arg_table_data = [];
+var arg_table_index_data= {};
+
+var table_index_data= {};
+var table_data = [];
+var index_data = [];
+
+
+var parseParam=function(param){
+    var paramStr="";
+    for (var key in param) {
+        paramStr = paramStr+ "&"+ key + '=' + JSON.stringify(param[key])
+    }
+    return paramStr.substr(1);
+};
+
+var findArrayByValue = function (ary, value,func) {
+    for (var index in ary) {
+        if (func(ary[index], value) === true) {
+            return ary[index]
+        }
+    }
+    return {}
+}
 
 $(document).ready(function() {
+    $.ajax({
+        type:'GET',
+        url:host+'/quantify/country',
+        data: {},
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        async: false,
+        success: function (resp) {
+            for (var index in resp.data) {
+                country_data.push(resp.data[index])
+            }
+            console.log(country_data,'r2')
+        }.bind(this)
+
+    });
+
+    $.ajax({
+        type:'GET',
+        url:host+'/quantify/agriculture_kinds',
+        data: {},
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        async: false,
+        success: function (resp) {
+            for (var index in resp.data) {
+                arg_kind_data.push(resp.data[index])
+            }
+            console.log(arg_kind_data,'r2')
+        }.bind(this)
+    });
+
+    $.ajax({
+        type:'GET',
+        url:host+'/quantify/agriculture_table',
+        data: {},
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        async: false,
+        success: function (resp) {
+            for (var table in resp.data) {
+                console.log('table', resp.data[table])
+                arg_table_data.push({label: resp.data[table].<fmt:message key="data.field" />, value: resp.data[table].id, id:resp.data[table].id})
+                arg_table_index_data[resp.data[table].id] = resp.data[table].indexes
+            }
+            arg_index_data = arg_table_index_data[2]
+            console.log('table', arg_table_data, 'index', arg_table_index_data)
+        }.bind(this)
+    })
+
+    $.ajax({
+        type:'GET',
+        url:host+'/quantify/socioeconomic_table',
+        data: {},
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        async: false,
+        success: function (resp) {
+            for (var table in resp.data) {
+                console.log('table', resp.data[table])
+                table_data.push({label: resp.data[table].<fmt:message key="data.field" />, value: resp.data[table].id, id:resp.data[table].id})
+                table_index_data[resp.data[table].id] = resp.data[table].indexes
+            }
+            console.log('table', table_data, 'index', table_index_data)
+            index_data = table_index_data[1]
+
+        }.bind(this)
+    })
 
 	$('#scroll_view').jqxScrollView({
 		width: 520, height: 280, buttonsOffset: [0, 0], slideShow: true, slideDuration: 5000, theme: '<%=jqx_theme %>'
@@ -53,106 +173,215 @@ $(document).ready(function() {
 	});
 	
 	var init_econ_widgets = function (tab) {
-		
-		var chart_data_source = [
-	           		{<fmt:message key="common.dimension.time" />:2005, <fmt:message key="common.country.brazil" />:18848, <fmt:message key="common.country.russia" />:14362, <fmt:message key="common.country.india" />:114433, <fmt:message key="common.country.china" />:133562, '<fmt:message key="common.country.south_africa" />':4835 },
-	           		{<fmt:message key="common.dimension.time" />:2006, <fmt:message key="common.country.brazil" />:19070, <fmt:message key="common.country.russia" />:14334, <fmt:message key="common.country.india" />:116209, <fmt:message key="common.country.china" />:134277, '<fmt:message key="common.country.south_africa" />':4903 },
-	           		{<fmt:message key="common.dimension.time" />:2007, <fmt:message key="common.country.brazil" />:19278, <fmt:message key="common.country.russia" />:14318, <fmt:message key="common.country.india" />:117969, <fmt:message key="common.country.china" />:134994, '<fmt:message key="common.country.south_africa" />':4969 },
-	           		{<fmt:message key="common.dimension.time" />:2008, <fmt:message key="common.country.brazil" />:19477, <fmt:message key="common.country.russia" />:14312, <fmt:message key="common.country.india" />:119707, <fmt:message key="common.country.china" />:135715, '<fmt:message key="common.country.south_africa" />':5035 },
-	           		{<fmt:message key="common.dimension.time" />:2009, <fmt:message key="common.country.brazil" />:19670, <fmt:message key="common.country.russia" />:14313, <fmt:message key="common.country.india" />:121418, <fmt:message key="common.country.china" />:136441, '<fmt:message key="common.country.south_africa" />':5099 },
-	           		{<fmt:message key="common.dimension.time" />:2010, <fmt:message key="common.country.brazil" />:19861, <fmt:message key="common.country.russia" />:14316, <fmt:message key="common.country.india" />:123098, <fmt:message key="common.country.china" />:137170, '<fmt:message key="common.country.south_africa" />':5162 }
-	           	                   ];
-		var chart_settings = {
-	           			title: '<fmt:message key="common.indicator.population" /> <fmt:message key="text.trend_chart" /> (2005 - 2010)',
-	           			description: '',
-	           			source: chart_data_source,
-	           			enableAnimations: true,
-	           			xAxis: {
-	           				dataField: '<fmt:message key="common.dimension.time" />',
-	           				valuesOnTicks: false,
-	           				minValue: 2005,
-	           				maxValue: 2010,
-	           				gridLines: {visible: false},
-	           			},
-	           			valueAxis: {
-	           				visible: true,
-	           				title: {text: '<fmt:message key="common.indicator.population" /> (<fmt:message key="common.unit.ten_thousand_people" />)'}
-	           			},
-	           			colorScheme: 'scheme04',
-	           			seriesGroups: [
-	           			               {
-	           			            	   type: 'line',
-	           			            	   toolTipFormatFunction: function(value, itemIndex, serie, group, categoryValue, categoryAxis) {
-	           			            		   return value;
-	           			            	   },
-	           			            	   series: [
-	           			            	            {dataField: '<fmt:message key="common.country.brazil" />', displayText: '<fmt:message key="common.country.brazil" />', symbolType: 'circle'},
-	           			            	            {dataField: '<fmt:message key="common.country.russia" />', displayText: '<fmt:message key="common.country.russia" />', symbolType: 'square'},
-	           			            	            {dataField: '<fmt:message key="common.country.india" />', displayText: '<fmt:message key="common.country.india" />', symbolType: 'diamond'},
-	           			            	            {dataField: '<fmt:message key="common.country.china" />', displayText: '<fmt:message key="common.country.china" />', symbolType: 'triangle_up'},
-	           			            	            {dataField: '<fmt:message key="common.country.south_africa" />', displayText: '<fmt:message key="common.country.south_africa" />', symbolType: 'triangle_down'}
-	           			            	            ]
-	           			               }
-	           			               ]
-		};
-		$('#data_chart_1').jqxChart(chart_settings);
-		$('#data_chart_2').jqxChart(chart_settings);
-		$('#data_chart_3').jqxChart(chart_settings);
+        var econ_data_source= [];
+        var econ_group_source=[];
+        var chart_settings = {
+            title: '',
+            description: '',
+            source: econ_data_source,
+            enableAnimations: true,
+            xAxis: {
+                dataField: 'time',
+                valuesOnTicks: false,
+                minValue: econ_query_args.start_time,
+                maxValue: econ_query_args.end_time,
+                gridLines: {visible: false},
+            },
+            valueAxis: {
+                visible: true,
+                title: {text: '<fmt:message key="common.indicator.population" /> (<fmt:message key="common.unit.ten_thousand_people" />)'}
+            },
+            colorScheme: 'scheme04',
+            seriesGroups: [
+                {
+                    type: 'line',
+                    toolTipFormatFunction: function(value, itemIndex, serie, group, categoryValue, categoryAxis) {
+                        return value;
+                    },
+                    series: econ_group_source
+                }
+            ]
+        };
+        $.ajax({
+            type:'GET',
+            url:host+'/quantify/socioeconomic_facts/graph?'+parseParam(econ_query_args),
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            async: false,
+            success: function (resp) {
+
+                for (var cur = econ_query_args.start_time;cur<= econ_query_args.end_time; cur++) {
+                    econ_data_source.push({time:cur})
+                }
+
+                for (var conuntry_i in econ_query_args.country_ids) {
+                    var country = findArrayByValue(country_data, econ_query_args.country_ids[conuntry_i], function (x, y) {
+                        if (x.id === y) {
+                            return true
+                        }
+                        return false
+                    })
+                    console.log('country', country)
+
+                    for (var index_i in econ_query_args.index_ids) {
+                        var index = findArrayByValue(index_data, econ_query_args.index_ids[index_i], function (x, y) {
+                            if (x.id === y) {
+                                return true
+                            }
+                            return false
+                        })
+
+                        console.log('index', index)
+                        econ_group_source.push({
+                            dataField: '' + country.id + index.id,
+                            displayText: country.<fmt:message key="data.field" />+ index.<fmt:message key="data.field" />,
+                            symbolType: 'circle'
+                        })
+                    }
+                }
+
+                for (var data_i in resp.data) {
+                    var data = resp.data[data_i]
+                    console.log("获得数据",data)
+                    for (var point_i in data.series) {
+                        var point = data.series[point_i]
+
+                        for (var source_i in econ_data_source) {
+                            if (econ_data_source[source_i].time === point.x) {
+                                econ_data_source[source_i]['' + data.country.id + data.index.id] = point.y
+                                break
+                            }
+                        }
+                    }
+                }
+                $('#data_chart_1').jqxChart(chart_settings);
+            }
+        });
 	};
 	$('#econ_tabs').jqxTabs({width: '100%', position: 'top', initTabContent: init_econ_widgets, theme: '<%=jqx_theme %>'});
 
 	$('#agri_expander').jqxExpander({
 		width: '350px', height: '280px', showArrow: false, toggleMode: 'none', theme: '<%=jqx_theme %>'
 	});
-	
+
 	var init_agri_widgets = function (tab) {
-		
-		var local_data = [
-		                   ['<fmt:message key="common.country.brazil" />', '<fmt:message key="common.product.rice" />', '<fmt:message key="common.indicator.total_production" /> (<fmt:message key="common.unit.ten_thousand_tons" />)', 392, 297, 289, 285, 287, 272],
-		                   ['<fmt:message key="common.country.russia" />', '<fmt:message key="common.product.rice" />', '<fmt:message key="common.indicator.total_production" /> (<fmt:message key="common.unit.ten_thousand_tons" />)', 14, 16, 16, 16, 18, 20],
-		                   ['<fmt:message key="common.country.india" />', '<fmt:message key="common.product.rice" />', '<fmt:message key="common.indicator.total_production" /> (<fmt:message key="common.unit.ten_thousand_tons" />)', 4366, 4381, 4391, 4554, 4192, 4286],
-		                   ['<fmt:message key="common.country.china" />', '<fmt:message key="common.product.rice" />', '<fmt:message key="common.indicator.total_production" /> (<fmt:message key="common.unit.ten_thousand_tons" />)', 2912, 2956, 2918, 2949, 2988, 3012],
-		                   ['<fmt:message key="common.country.south_africa" />', '<fmt:message key="common.product.rice" />', '<fmt:message key="common.indicator.total_production" /> (<fmt:message key="common.unit.ten_thousand_tons" />)', 0, 0, 0, 0, 0, 0]
-		                   ];
-		var data_fields = [
-		                   {name: 'location', type: 'string', map: '0'},
-		                   {name: 'product', type: 'string', map: '1'},
-		                   {name: 'variable', type: 'string', map: '2'},
-		                   {name: 'y2005', type: 'number', map: '3'},
-		                   {name: 'y2006', type: 'number', map: '4'},
-		                   {name: 'y2007', type: 'number', map: '5'},
-		                   {name: 'y2008', type: 'number', map: '6'},
-		                   {name: 'y2009', type: 'number', map: '7'},
-		                   {name: 'y2010', type: 'number', map: '8'}
-		                   ];
-		var data_columns = [
-		                   {text: '<fmt:message key="common.dimension.country" />', datafield: 'location', width: 50},
-		                   {text: '<fmt:message key="common.dimension.product" />', datafield: 'product', width: 40},
-		                   {text: '<fmt:message key="common.dimension.indicator" />', datafield: 'variable', width: 70},
-		                   {text: '2005', datafield: 'y2005', width: 40, cellsalign: 'right'},
-		                   {text: '2006', datafield: 'y2006', width: 40, cellsalign: 'right'},
-		                   {text: '2007', datafield: 'y2007', width: 40, cellsalign: 'right'},
-		                   {text: '2008', datafield: 'y2008', width: 40, cellsalign: 'right'},
-		                   {text: '2009', datafield: 'y2009', width: 40, cellsalign: 'right'},
-		                   {text: '2010', datafield: 'y2010', width: 40, cellsalign: 'right'}
-		               ];
-		var data_source = {
-				localdata: local_data,
-				datafields: data_fields,
-				datatype: 'array'
-		};
-		var data_adapter = new $.jqx.dataAdapter(data_source);
-		$('#data_grid_1').jqxGrid({
-			width: '345px', height: '215px', source: data_adapter, columnsresize: true, columns: data_columns, theme: '<%=jqx_theme %>'
-		});
-		$('#data_grid_2').jqxGrid({
-			width: '345px', height: '215px', source: data_adapter, columnsresize: true, columns: data_columns, theme: '<%=jqx_theme %>'
-		});
-		$('#data_grid_3').jqxGrid({
-			width: '345px', height: '215px', source: data_adapter, columnsresize: true, columns: data_columns, theme: '<%=jqx_theme %>'
-		});
-		
+
+        var local_data = [
+        ];
+
+        var data_fields = [
+            {name: 'country', type: 'string', map: 'country'},
+            {name: 'index', type: 'string', map: 'index'},
+            {name: 'country_id', type:'number',map: 'country_id'},
+            {name: 'index_id', type:'number', map:'index_id'},
+            {name: 'kind', type: 'string', map: 'kind'},
+            {name: 'kind_id', type: 'number' , map:'kind_id'}
+        ];
+        var data_columns = [
+            {text: '<fmt:message key="common.dimension.country" />', datafield: 'country', width: 70},
+            {text: '<fmt:message key="common.dimension.product" />', datafield: 'kind', width: 70},
+            {text: '<fmt:message key="common.dimension.indicator" />', datafield: 'index', width: 100}];
+
+        var data_source = {
+            localdata: local_data,
+            datafields: data_fields,
+            datatype: 'array'
+        };
+        var data_adapter = new $.jqx.dataAdapter(data_source);
+        $('#data_grid_1').jqxGrid({
+            width: '345px', height: '215px', source: data_adapter, columnsresize: true, columns: data_columns, theme: '<%=jqx_theme %>'
+        });
+
+        for (var year = arg_query_args.start_time;year<=arg_query_args.end_time; year++){
+            data_fields.push({name: 'y'+year, type: 'object', map: 'y'+year.toString()+'>value'} );
+            data_fields.push({name: 'y'+year+'_id', type: 'object', map: 'y'+year.toString()+'>id'} );
+            data_columns.push({text: year.toString(), datafield: 'y'+year, width: 70, cellsalign: 'right'})
+            console.log('fill',year)
+        }
+        $.ajax({
+            type:'GET',
+            url:host+'/quantify/agriculture_facts?'+parseParam(arg_query_args),
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            async: true,
+            success: function (resp) {
+
+                for (var index_id_i in arg_query_args.index_ids) {
+                    var index_id = arg_query_args.index_ids[index_id_i]
+                    for (var country_id_i in arg_query_args.country_ids) {
+                        var country_id = arg_query_args.country_ids[country_id_i]
+                        for (var kind_id_i in arg_query_args.kind_ids) {
+                            var kind_id = arg_query_args.kind_ids[kind_id_i]
+
+                            var datas = findArrayByValue(
+                                resp.data, {"index_id":index_id, "country_id":country_id, "kind_id": kind_id},
+                                function (x,y) {
+                                    if (x.country.id === y["country_id"] && x.index.id === y["index_id"] && x.kind.id== y['kind_id']) {
+                                        console.log("查找成功", 'x:', x, 'y', y)
+                                        return true
+                                    }
+                                    return false
+                                }
+                            ).data
+
+                            console.log("fill datas", datas)
+
+                            var line = {
+                                country:
+                                findArrayByValue(country_data,
+                                    country_id,
+                                    function (x,y) {
+                                        if (x.id === y) {
+                                            return true
+                                        }
+                                        return false
+                                    }
+                                ).<fmt:message key="data.field" />,
+                                index: findArrayByValue(arg_index_data,
+                                    index_id,
+                                    function (x,y) {
+                                        if (x.id === y) {
+                                            return true
+                                        }
+                                        return false
+                                    }
+                                ).<fmt:message key="data.field" />,
+                                kind: findArrayByValue(arg_kind_data,
+                                    kind_id,
+                                    function (x,y) {
+                                        if (x.id === y) {
+                                            return true
+                                        }
+                                        return false
+                                    }
+                                ).<fmt:message key="data.field" />,
+                                country_id: country_id,
+                                index_id: index_id,
+                                kind_id: kind_id}
+
+                            for (var data_i in datas) {
+                                var tmp_data = datas[data_i];
+                                console.log("当数据是",[country_id, index_id, kind_id], "填充",tmp_data)
+                                line['y'+tmp_data.time] = {value:tmp_data.value, id:tmp_data.id}
+                            }
+                            console.log("填充完成",line)
+                            local_data.push(line)
+                        }
+                    }
+                }
+                console.log('local',local_data)
+                data_adapter.dataBind()
+
+            }
+        });
 	};
+
 	$('#agri_tabs').jqxTabs({ width: '100%', position: 'top', initTabContent: init_agri_widgets, theme: '<%=jqx_theme %>'});
 	
 	$('#policy_expander_3').jqxExpander({
@@ -164,7 +393,8 @@ $(document).ready(function() {
 	});
 	
 });
-$(document).ready(function() {
+
+    $(document).ready(function() {
     $.ajax({
         type: "get",
         async: false,
@@ -181,6 +411,7 @@ $(document).ready(function() {
             data.forEach(function (value,index) {
 				console.log(value.kind_id)
 				if(index <10){
+                    $(".scroll_view").append('<div><div class="photo" style="background-image: url('+value.img_url+')"></div></div>')
                     $(".news_expander").append('<div class="news_content">·<a href="policy_detail.jsp?id='+ value.id+'">'+value.title+'</a></div>')
                 }
 				if(value.kind_id == 1){
@@ -195,6 +426,26 @@ $(document).ready(function() {
             })
         }
     });
+
+	$.ajax({
+		type: "get",
+		async: false,
+		xhrFields: {
+			withCredentials: true
+		},
+		crossDomain: true,
+		url: host+"/qualitative/Images?status=1",
+		data: {},
+		success: function (result) {
+			console.log(result)
+			var data = result.data
+			console.log(data)
+			data.forEach(function (value,index) {
+                $("#scroll_view").append('<div><div class="photo" style="background-image: url(' + value.img_url+
+					')"></div></div>')
+			})
+		}
+	});
 })
 
 </script>
@@ -245,12 +496,8 @@ $(document).ready(function() {
 			<div id="econ_tabs">
 				<ul>
 					<li><fmt:message key="text.population" /></li>
-					<li><fmt:message key="text.economy" /></li>
-					<li><fmt:message key="text.trade" /></li>
 				</ul>
 				<div style="overflow: hidden;"><div id="data_chart_1" style="width: 350px; height: 220px;"></div></div>
-				<div style="overflow: hidden;"><div id="data_chart_2" style="width: 350px; height: 220px;"></div></div>
-				<div style="overflow: hidden;"><div id="data_chart_3" style="width: 350px; height: 220px;"></div></div>
 			</div>
 		</div>
 	</div>
@@ -288,12 +535,8 @@ $(document).ready(function() {
 			<div id="agri_tabs">
 				<ul>
 					<li><fmt:message key="text.production" /></li>
-					<li><fmt:message key="text.trade" /></li>
-					<li><fmt:message key="text.investment" /></li>
 				</ul>
 				<div><div id="data_grid_1"></div></div>
-				<div><div id="data_grid_2"></div></div>
-				<div><div id="data_grid_3"></div></div>
 			</div>
 		</div>
 	</div>

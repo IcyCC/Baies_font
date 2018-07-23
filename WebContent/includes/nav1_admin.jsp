@@ -16,6 +16,7 @@ String jqx_nav_theme = (String)request.getSession().getAttribute("jqx_nav_theme"
 		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.approval" /></li>
 		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.indicator" /></li>
 		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.user" /></li>
+		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.images" /></li>
 	</ul>
 	<div></div>
 	<div></div>

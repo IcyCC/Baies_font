@@ -73,10 +73,10 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
 
     var table_index_data= {};
     var table_data = [];
-    var country_data = [];
-    var index_data = [];
     var query_args = getQueryString()
     var old_query_args = getQueryString();
+    var country_data = [];
+    var index_data = [];
     var kind_data = [];
     var local_data = [
     ];

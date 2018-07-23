@@ -28,7 +28,8 @@ nav_items = [ "../baies/index.jsp", "../baies/policy.jsp",
 
 nav_items_admin = [ "../baies/admin_policy_approval.jsp",
 		"../baies/admin_econ_data_indicator.jsp",
-		"../baies/admin_user_management.jsp" ];
+		"../baies/admin_user_management.jsp",
+"../baies/admin_images_management.jsp"];
 
 nav_items_country = [ "../baies/country_policy_management.jsp",
 		"../baies/country_econ_data_management.jsp",
