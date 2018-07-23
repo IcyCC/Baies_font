@@ -76,6 +76,7 @@ var findArrayByValue = function (ary, value,func) {
 }
 
 $(document).ready(function() {
+    $("#jqxLoader").jqxLoader('open')
     $.ajax({
         type:'GET',
         url:host+'/quantify/country',
@@ -84,7 +85,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: false,
+        async: true,
         success: function (resp) {
             for (var index in resp.data) {
                 country_data.push(resp.data[index])
@@ -102,7 +103,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: false,
+        async: true,
         success: function (resp) {
             for (var index in resp.data) {
                 arg_kind_data.push(resp.data[index])
@@ -119,7 +120,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: false,
+        async: true,
         success: function (resp) {
             for (var table in resp.data) {
                 console.log('table', resp.data[table])
@@ -151,6 +152,26 @@ $(document).ready(function() {
 
         }.bind(this)
     })
+
+    $.ajax({
+        type: "get",
+        async: false,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        url: host+"/qualitative/Images?status=1",
+        data: {},
+        success: function (result) {
+            console.log(result)
+            var data = result.data
+            console.log(data)
+            data.forEach(function (value) {
+                $("#scroll_view").append('<div><div class="photo" style="background-image: url(' + value.img_url+
+                    ')"></div></div>')
+            })
+        }
+    });
 
 	$('#scroll_view').jqxScrollView({
 		width: 520, height: 280, buttonsOffset: [0, 0], slideShow: true, slideDuration: 5000, theme: '<%=jqx_theme %>'
@@ -411,7 +432,7 @@ $(document).ready(function() {
             data.forEach(function (value,index) {
 				console.log(value.kind_id)
 				if(index <10){
-                    $(".scroll_view").append('<div><div class="photo" style="background-image: url('+value.img_url+')"></div></div>')
+                    // $(".scroll_view").append('<div><div class="photo" style="background-image: url('+value.img_url+')"></div></div>')
                     $(".news_expander").append('<div class="news_content">·<a href="policy_detail.jsp?id='+ value.id+'">'+value.title+'</a></div>')
                 }
 				if(value.kind_id == 1){
@@ -425,27 +446,10 @@ $(document).ready(function() {
                 }
             })
         }
-    });
 
-	$.ajax({
-		type: "get",
-		async: false,
-		xhrFields: {
-			withCredentials: true
-		},
-		crossDomain: true,
-		url: host+"/qualitative/Images?status=1",
-		data: {},
-		success: function (result) {
-			console.log(result)
-			var data = result.data
-			console.log(data)
-			data.forEach(function (value,index) {
-                $("#scroll_view").append('<div><div class="photo" style="background-image: url(' + value.img_url+
-					')"></div></div>')
-			})
-		}
-	});
+    });
+        $("#jqxLoader").jqxLoader('close')
+
 })
 
 </script>
@@ -469,10 +473,10 @@ $(document).ready(function() {
 
 
 <div class="margin_20">
+	<div id="jqxLoader">
+
+	</div>
 	<div id="scroll_view" class="left">
-		<div><div class="photo" style="background-image: url(../images/sv1.jpg)"></div></div>
-		<div><div class="photo" style="background-image: url(../images/sv2.jpg)"></div></div>
-		<div><div class="photo" style="background-image: url(../images/sv3.jpg)"></div></div>
 	</div>
 	<div class="left margin_15"></div>
 	<div id="news_expander" class="left">

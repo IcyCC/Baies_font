@@ -198,7 +198,7 @@ $(document).ready(function() {
 
                 $.ajax({
                     type: 'PUT',
-                    url: host + '/qualitative/Images' + image.id,
+                    url: host + '/qualitative/Images/' + image.id,
                     data: post_data,
                     async: true,
                     xhrFields: {

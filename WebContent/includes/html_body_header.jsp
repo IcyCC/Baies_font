@@ -29,15 +29,18 @@
 </style>
 
 <script type="text/javascript">
+
     var current_user = {};
 
     $(document).ready(function () {
-
+        $("#jqxLoader").jqxLoader({ height: document.body.scrollHeight,
+		width: document.body.scrollWidth})
+        $("#jqxLoader").jqxLoader('open')
         $.ajax({
             type:'GET',
             url:host+'/user/current_user',
             data: {},
-            xhrFields: {
+            xhrFields: { q
                 withCredentials: true
             },
             crossDomain: true,
@@ -141,6 +144,9 @@
 <div id="background">
 	<!--container start-->
 	<div id="container">
+		<div id="jqxLoader">
+
+		</div>
 		<!--header start-->
 		<div id="header" style="background-image: url(../images/banner_<fmt:message key="common.language" />.png);">
 			<div class="right margin_10">
