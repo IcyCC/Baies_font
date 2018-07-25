@@ -21,7 +21,7 @@ String jqx_nav_theme = (String)request.getSession().getAttribute("jqx_nav_theme"
 </div>
 <script>
 $(document).ready(function() {
-	$('#nav1').jqxNavBar({width: 998, height: 40, theme: '<%=jqx_nav_theme %>',
+	$('#nav1').jqxNavBar({width: 998, height: 40, theme: 'darkblue',
 		selectedItem: page_id});
 	$('#nav1').on('change', function() {
 		var idx = $('#nav1').jqxNavBar('getSelectedIndex');

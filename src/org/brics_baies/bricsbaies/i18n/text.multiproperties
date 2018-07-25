@@ -345,13 +345,6 @@
             <Value disabled="false">指标管理</Value>
         </Property>
         <Property>
-            <Name>nav.system_admin.images</Name>
-            <Disabled>false</Disabled>
-            <MultiLine>false</MultiLine>
-            <Value disabled="false">Image Manage</Value>
-            <Value disabled="false">轮播图管理</Value>
-        </Property>
-        <Property>
             <Name>nav.system_admin.indicator.econ</Name>
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>

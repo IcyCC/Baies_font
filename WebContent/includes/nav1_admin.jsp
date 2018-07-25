@@ -15,16 +15,17 @@ String jqx_nav_theme = (String)request.getSession().getAttribute("jqx_nav_theme"
 	<ul>
 		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.approval" /></li>
 		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.indicator" /></li>
-		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.user" /></li>
-		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.images" /></li>
+		<li style="height: 25px; line-height: 35px;"><fmt:message key="nav.system_admin.user" /></li>
+		<li style="height: 25px; line-height: 35px;"><fmt:message key="nav.system_admin.images" /></li>
 	</ul>
+	<div></div>
 	<div></div>
 	<div></div>
 	<div></div>
 </div>
 <script>
 $(document).ready(function() {
-	$('#nav1_admin').jqxTabs({width: '998px', height: '50px', theme: '<%=jqx_nav_theme %>',
+	$('#nav1_admin').jqxTabs({width: '998px', height: '50px', theme: 'darkblue',
 		selectedItem: page_id, position: 'top'});
 	$('#nav1_admin').jqxTabs('collapse');
 	$('#nav1_admin').on('selected', function(event) {

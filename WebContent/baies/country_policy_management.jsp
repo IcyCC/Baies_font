@@ -20,8 +20,25 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
 page_id = 0;
 
 $(document).ready(function() {
-	
-	$('#cat_tabs').jqxTabs({width: '998px', position: 'top', theme: '<%=jqx_theme %>'});
+
+    var country_data=[];
+    $.ajax({
+        type:'GET',
+        url:host+'/quantify/country',
+        data: {},
+        async: false,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        success: function (resp) {
+            for (var index in resp.data) {
+                country_data.push(resp.data[index])
+            }
+        }
+    })
+
+    $('#cat_tabs').jqxTabs({width: '998px', position: 'top', theme: '<%=jqx_theme %>'});
 	
 	var rows = $("#news_ul");
 	var data_kind_1 = [];
@@ -65,6 +82,9 @@ $(document).ready(function() {
 				datarow['operation'] = $(row).find('li:nth-child(7)').html();
 				datarow['body'] = resp.data[index].body
 				datarow['kind_id'] = resp.data[index].kind_id
+                datarow['img_url'] = resp.data[index].img_url
+				datarow['picture'] =  "<img width='50px' height='30px' src="+ resp.data[index].img_url +" >"+"</img>"
+				datarow['country_id'] = resp.data[index].country_id
 
                 switch(datarow['kind_id'])
                 {
@@ -100,12 +120,13 @@ $(document).ready(function() {
 			             {name: 'status', type: 'string'},
 			             {name: 'operation', type: 'string'},
 				         {name: 'body', type:'string'},
-				         {name: 'kind_id', type:'string'}]
+				         {name: 'kind_id', type:'string'},
+				         {name: 'country_id', type: 'number'}]
 	};
 
 	var dataAdapter_kind_1 = new $.jqx.dataAdapter(source_kind_1);
 	var settings_kind_1 = {
-			width: '850px',
+			width: '900px',
 			source: dataAdapter_kind_1,
 			autoheight: true,
 			autorowheight: true,
@@ -114,13 +135,13 @@ $(document).ready(function() {
 			pagesize: 10,
 			theme: '<%=jqx_theme %>',
 			columns: [
-			    // {text: '', dataField: 'picture', width: 65, align: 'center'},
-			          {text: '标题', dataField: 'title', width: 345, align: 'center'},
-			          {text: '<fmt:message key="text.author" />', dataField: 'author', width: 80, align: 'center', cellsalign: 'center'},
-			          {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
+                      {text: '<fmt:message key="post.img_url" />', dataField: 'picture', width: 80, align: 'center'},
+			          {text: '<fmt:message key="post.title" />', dataField: 'title', width: 320, align: 'center'},
+			          {text: '<fmt:message key="text.author" />', dataField: 'author', width: 120, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="post.create_time" />', dataField: 'create_time', width: 140, align: 'center', cellsalign: 'center'},
 			          // {text: '修改时间', dataField: 'modify_time', width: 100, align: 'center', cellsalign: 'center'},
-			          {text: '审核状态', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
-			          {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+                          {text: '<fmt:message key="post.status" />', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 120, align: 'center', cellsalign: 'center'}
 			          ],
 			showtoolbar: true,
 			rendertoolbar: function(toolbar) {
@@ -131,6 +152,7 @@ $(document).ready(function() {
 				$("#addrowbutton").on('click', function () {
 					$('#edit_title_input').val('');
 					$('#edit_content_editor').val('');
+					$('#country_input').val('');
 					$('#edit_window').jqxWindow('open');
 
                     $("#cover-input-file").one("change", function(){
@@ -161,6 +183,7 @@ $(document).ready(function() {
                         post_data.title = $('#edit_title_input').val();
                         post_data.body = $('#edit_content_editor').val();
                         post_data.kind_id = 1
+						post_data.country_id = $('#country_input').val()
 
 						if (post_data.img_url !== ''){
                             post_data.img_url = host+upload_url
@@ -198,7 +221,9 @@ $(document).ready(function() {
             {name: 'status', type: 'string'},
             {name: 'operation', type: 'string'},
             {name: 'body', type:'string'},
-            {name: 'kind_id', type:'string'}]
+            {name: 'kind_id', type:'string'},
+            {name: 'country_id', type: 'number'}]
+
     };
 
     var dataAdapter_kind_2 = new $.jqx.dataAdapter(source_kind_2);
@@ -212,13 +237,13 @@ $(document).ready(function() {
         pagesize: 10,
         theme: '<%=jqx_theme %>',
         columns: [
-            // {text: '', dataField: 'picture', width: 65, align: 'center'},
-            {text: '标题', dataField: 'title', width: 345, align: 'center'},
-            {text: '<fmt:message key="text.author" />', dataField: 'author', width: 80, align: 'center', cellsalign: 'center'},
-            {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="post.img_url" />', dataField: 'picture', width: 80, align: 'center'},
+            {text: '<fmt:message key="post.title" />', dataField: 'title', width: 320, align: 'center'},
+            {text: '<fmt:message key="text.author" />', dataField: 'author', width: 120, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="post.create_time" />', dataField: 'create_time', width: 140, align: 'center', cellsalign: 'center'},
             // {text: '修改时间', dataField: 'modify_time', width: 100, align: 'center', cellsalign: 'center'},
-            {text: '审核状态', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
-            {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+            {text: '<fmt:message key="post.status" />', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 120, align: 'center', cellsalign: 'center'}
         ],
         showtoolbar: true,
         rendertoolbar: function(toolbar) {
@@ -263,6 +288,8 @@ $(document).ready(function() {
                     post_data.title = $('#edit_title_input').val();
                     post_data.body = $('#edit_content_editor').val();
                     post_data.kind_id = 2
+                    post_data.country_id = $('#country_input').val()
+
                     console.log("add a post", post_data)
                     $.ajax({
                         type:'POST',
@@ -295,7 +322,10 @@ $(document).ready(function() {
             {name: 'status', type: 'string'},
             {name: 'operation', type: 'string'},
             {name: 'body', type:'string'},
-            {name: 'kind_id', type:'string'}]
+            {name: 'kind_id', type:'string'},
+            {name: 'country_id', type: 'number'}]
+
+
     };
 
     var dataAdapter_kind_3 = new $.jqx.dataAdapter(source_kind_3);
@@ -309,13 +339,13 @@ $(document).ready(function() {
         pagesize: 10,
         theme: '<%=jqx_theme %>',
         columns: [
-            // {text: '', dataField: 'picture', width: 65, align: 'center'},
-            {text: '标题', dataField: 'title', width: 345, align: 'center'},
-            {text: '<fmt:message key="text.author" />', dataField: 'author', width: 80, align: 'center', cellsalign: 'center'},
-            {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="post.img_url" />', dataField: 'picture', width: 80, align: 'center'},
+            {text: '<fmt:message key="post.title" />', dataField: 'title', width: 320, align: 'center'},
+            {text: '<fmt:message key="text.author" />', dataField: 'author', width: 120, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="post.create_time" />', dataField: 'create_time', width: 140, align: 'center', cellsalign: 'center'},
             // {text: '修改时间', dataField: 'modify_time', width: 100, align: 'center', cellsalign: 'center'},
-            {text: '审核状态', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
-            {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+            {text: '<fmt:message key="post.status" />', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 120, align: 'center', cellsalign: 'center'}
         ],
         showtoolbar: true,
         rendertoolbar: function(toolbar) {
@@ -361,6 +391,7 @@ $(document).ready(function() {
                     post_data.title = $('#edit_title_input').val();
                     post_data.body = $('#edit_content_editor').val();
                     post_data.kind_id = 3
+                    post_data.country_id = $('#country_input').val()
                     console.log("add a post", post_data)
                     $.ajax({
                         type:'POST',
@@ -393,7 +424,9 @@ $(document).ready(function() {
             {name: 'status', type: 'string'},
             {name: 'operation', type: 'string'},
             {name: 'body', type:'string'},
-            {name: 'kind_id', type:'string'}]
+            {name: 'kind_id', type:'string'},
+            {name: 'country_id', type: 'number'}]
+
     };
 
     var dataAdapter_kind_4 = new $.jqx.dataAdapter(source_kind_4);
@@ -407,13 +440,13 @@ $(document).ready(function() {
         pagesize: 10,
         theme: '<%=jqx_theme %>',
         columns: [
-            // {text: '', dataField: 'picture', width: 65, align: 'center'},
-            {text: '标题', dataField: 'title', width: 345, align: 'center'},
-            {text: '<fmt:message key="text.author" />', dataField: 'author', width: 80, align: 'center', cellsalign: 'center'},
-            {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="post.img_url" />', dataField: 'picture', width: 80, align: 'center'},
+            {text: '<fmt:message key="post.title" />', dataField: 'title', width: 320, align: 'center'},
+            {text: '<fmt:message key="text.author" />', dataField: 'author', width: 120, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="post.create_time" />', dataField: 'create_time', width: 140, align: 'center', cellsalign: 'center'},
             // {text: '修改时间', dataField: 'modify_time', width: 100, align: 'center', cellsalign: 'center'},
-            {text: '审核状态', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
-            {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+            {text: '<fmt:message key="post.status" />', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
+            {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 120, align: 'center', cellsalign: 'center'}
         ],
         showtoolbar: true,
         rendertoolbar: function(toolbar) {
@@ -431,6 +464,7 @@ $(document).ready(function() {
                     post_data.title = $('#edit_title_input').val();
                     post_data.body = $('#edit_content_editor').val();
                     post_data.kind_id = 4
+                    post_data.country_id = $('#country_input').val()
                     console.log("add a post", post_data)
                     $.ajax({
                         type:'POST',
@@ -456,8 +490,9 @@ $(document).ready(function() {
 	$('#news_grid_2').jqxGrid(settings_kind_2);
 	$('#news_grid_3').jqxGrid(settings_kind_3);
 	$('#news_grid_4').jqxGrid(settings_kind_4);
-	
-	$('#dialog_window').jqxWindow({
+    $('#country_input').jqxDropDownList({ source: country_data, displayMember: '<fmt:message key="data.field" />', valueMember: "id" ,width: '250px', height: '20px'})
+
+    $('#dialog_window').jqxWindow({
 		width: 350, height: 'auto', resizable: false,  isModal: true, autoOpen: false,
 		okButton: $("#dialog_window_ok_button"), cancelButton: $("#dialog_window_cancel_button"),
 		modalOpacity: 0.3, theme: '<%=jqx_theme %>'
@@ -480,8 +515,8 @@ $(document).ready(function() {
 		});
 		$('#dialog_window').jqxWindow('open');
 	});
-	
-	$('#edit_window').jqxWindow({
+
+    $('#edit_window').jqxWindow({
 		width: 700, height: 580, resizable: false,  isModal: true, autoOpen: false,
 		okButton: $("#edit_window_ok_button"), cancelButton: $("#edit_window_cancel_button"),
 		modalOpacity: 0.3, theme: '<%=jqx_theme %>'
@@ -511,6 +546,8 @@ $(document).ready(function() {
 
 
 
+
+
     $("#news_grid_1").on("cellclick", function (event)
     {
         // event arguments.
@@ -522,6 +559,7 @@ $(document).ready(function() {
 
         $('.edit_buttons').one('click', function() {
             $('#edit_title_input').val(post.title);
+            $('#country_input').val(post.id);
             $('#edit_content_editor').val($('<div />').html(post.body).text());
             $('#edit_window').jqxWindow('open');
 
@@ -555,7 +593,7 @@ $(document).ready(function() {
                     body: "",
                     kind_id: 1,
                     title: "",
-					img_url: '/'
+					img_url: post.img_url
                 };
 
                 if (upload_url !== '') {
@@ -566,6 +604,7 @@ $(document).ready(function() {
 
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
+                post_data.country_id = $('#country_input').val()
 
                 console.log("change user", post_data)
 
@@ -629,6 +668,7 @@ $(document).ready(function() {
             $('#edit_title_input').val(post.title);
             $('#edit_content_editor').val($('<div />').html(post.body).text());
             $('#edit_window').jqxWindow('open');
+            $('#country_input').val(post.country_id)
 
             $("#cover-input-file").one("change", function(){
                 console.log("uopload")
@@ -667,7 +707,7 @@ $(document).ready(function() {
 
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
-
+                post_data.country_id = $('#country_input').val()
                 console.log("change user", post_data)
 
                 $.ajax({
@@ -753,6 +793,8 @@ $(document).ready(function() {
             $('#edit_title_input').val(post.title);
             $('#edit_content_editor').val($('<div />').html(post.body).text());
             $('#edit_window').jqxWindow('open');
+            $('#country_input').val(post.country_id)
+
 
             $('#edit_window_ok_button').one('click', function (event) {
                 console.log(post)
@@ -760,13 +802,15 @@ $(document).ready(function() {
                     body: "",
                     kind_id: 3,
                     title: "",
-					img_url: '/'
+					img_url: post.img_url
                 };
                 if (upload_url !== '') {
                     post_data.img_url = host + upload_url
                 }
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
+                post_data.country_id = $('#country_input').val();
+
 
                 console.log("change user", post_data)
 
@@ -831,6 +875,7 @@ $(document).ready(function() {
             $('#edit_title_input').val(post.title);
             $('#edit_content_editor').val($('<div />').html(post.body).text());
             $('#edit_window').jqxWindow('open');
+            $('#country_input').val(post.country_id);
 
             $("#cover-input-file").one("change", function(){
                 console.log("uopload")
@@ -868,6 +913,7 @@ $(document).ready(function() {
                 }
                 post_data.title = $('#edit_title_input').val();
                 post_data.body = $('#edit_content_editor').val();
+                post_data.country_id = $('#country_input').val();
 
                 console.log("change user", post_data)
 
@@ -918,6 +964,7 @@ $(document).ready(function() {
 
         }.bind(this));
     });
+
 });
 
 </script>
@@ -986,6 +1033,7 @@ $(document).ready(function() {
 	<li><fmt:message key="temp.policy_author" /></li>
 	<li>2016-07-01 08:00</li>
 	<li>2016-07-04 10:39</li>
+
 	<li><span>等待审核</span><span>审核通过</span><span>审核未通过</span></li>
 	<li>
 		<button>
@@ -1015,10 +1063,9 @@ $(document).ready(function() {
 	<div>录入信息</div>
 	<div style="overflow: hidden; padding: 20px;">
 		<div class="left" style="width: 50px;">标题:</div>
-		<span>上传封面: <input class="left" type="text" id="edit_title_input"></span>
-		<div class="clear"></div>
-		<div class="margin_10"></div>
-		<input type="file" id="cover-input-file" name="file" accept="image/*" style="height:40px">
+		<input class="left" type="text" id="edit_title_input">
+		<span>上传封面: <input type="file" id="cover-input-file" name="file" accept="image/*" style="height:40px"></span>
+		<div>国家:<div id="country_input"></div></div>
 		<textarea id="edit_content_editor"></textarea>
 		<div class="right margin_10">
 			<input type="button" id="edit_window_ok_button" value="保存">

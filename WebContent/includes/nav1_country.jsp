@@ -23,7 +23,7 @@ String jqx_nav_theme = (String)request.getSession().getAttribute("jqx_nav_theme"
 </div>
 <script>
 $(document).ready(function() {
-	$('#nav1_country').jqxTabs({width: '998px', height: '50px', theme: '<%=jqx_nav_theme %>',
+	$('#nav1_country').jqxTabs({width: '998px', height: '50px', theme: 'darkblue',
 		selectedItem: page_id, position: 'top'});
 	$('#nav1_country').jqxTabs('collapse');
 	$('#nav1_country').on('selected', function(event) {

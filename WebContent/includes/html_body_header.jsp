@@ -40,7 +40,7 @@
             type:'GET',
             url:host+'/user/current_user',
             data: {},
-            xhrFields: { q
+            xhrFields: {
                 withCredentials: true
             },
             crossDomain: true,
@@ -137,6 +137,7 @@
                 }
             });
         })
+        $("#jqxLoader").jqxLoader('close')
     });
 </script>
 

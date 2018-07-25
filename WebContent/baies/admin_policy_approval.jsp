@@ -21,28 +21,53 @@ page_id = 0;
 
 var selete_cat = 'cat1'
 
+var findArrayByValue = function (ary, value,func) {
+    for (var index in ary) {
+        if (func(ary[index], value) === true) {
+            console.log("compare",value)
+            return ary[index]
+        }
+    }
+    return {}
+}
 
 var data = [];
+var country_data=[];
+$.ajax({
+    type:'GET',
+    url:host+'/quantify/country',
+    data: {},
+    async: false,
+    xhrFields: {
+        withCredentials: true
+    },
+    crossDomain: true,
+    success: function (resp) {
+        for (var index in resp.data) {
+            country_data.push(resp.data[index])
+        }
+    }
+})
 
 var source = {
     localdata: data,
     datatype: 'array',
     datafields: [
-        {name: 'id', type: 'number'},
+        {name:'id', type:'number'},
         {name: 'picture', type: 'string'},
         {name: 'title', type: 'string'},
-        {name: 'country', type: 'string'},
         {name: 'author', type: 'string'},
         {name: 'create_time', type: 'string'},
-        {name: 'modify_time', type: 'string'},
+        {name: 'status', type: 'string'},
         {name: 'operation', type: 'string'},
         {name: 'body', type:'string'},
         {name: 'kind_id', type:'string'},
-		{name: 'status', type:'string'}],
+        {name: 'country_id', type: 'number'},
+		{name: 'country', type:'国家'}]
 };
 var dataAdapter = new $.jqx.dataAdapter(source);
 var settings = {
-    width: '850px',
+    width: '950px',
     source: dataAdapter,
     autoheight: true,
     autorowheight: true,
@@ -51,14 +76,13 @@ var settings = {
     pagesize: 10,
     theme: '<%=jqx_theme %>',
     columns: [
-        // {text: '', dataField: 'picture', width: 65, align: 'center'},
-        {text: '标题', dataField: 'title', width: 345, align: 'center'},
-        {text: '<fmt:message key="common.dimension.country" />', dataField: 'country', width: 80, align: 'center', cellsalign: 'center'},
-        {text: '<fmt:message key="text.author" />', dataField: 'author', width: 80, align: 'center', cellsalign: 'center'},
-        {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
-        {text: '是否过审', dataField: 'status', width: 50, align: 'center', cellsalign: 'center'},
+        {text: '<fmt:message key="post.img_url" />', dataField: 'picture', width: 80, align: 'center'},
+        {text: '<fmt:message key="post.title" />', dataField: 'title', width: 320, align: 'center'},
+        {text: '<fmt:message key="text.author" />', dataField: 'author', width: 120, align: 'center', cellsalign: 'center'},
+        {text: '<fmt:message key="post.create_time" />', dataField: 'create_time', width: 140, align: 'center', cellsalign: 'center'},
         // {text: '修改时间', dataField: 'modify_time', width: 100, align: 'center', cellsalign: 'center'},
-        {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+        {text: '<fmt:message key="post.status" />', dataField: 'status', width: 80, align: 'center', cellsalign: 'center'},
+        {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 120, align: 'center', cellsalign: 'center'}
     ]
 };
 $(document).ready(function() {
@@ -71,10 +95,10 @@ $(document).ready(function() {
 	});
 	
 	var categories = [
-	      		{ label: '农业发展政策信息', value: 'cat1' },
-	      		{ label: '农业贸易政策信息', value: 'cat2' },
-	      		{ label: '农业科技发展信息', value: 'cat3' },
-	      		{ label: '渔业水产政策信息', value: 'cat4' },
+	      		{ label: '<fmt:message key="cat.dev" />', value: 'cat1' },
+	      		{ label: '<fmt:message key="cat.trade" />', value: 'cat2' },
+	      		{ label: '<fmt:message key="cat.tech" />', value: 'cat3' },
+	      		{ label: '<fmt:message key="cat.fish" />', value: 'cat4' },
 	      	];
 
 	var rows = $("#news_ul");
@@ -134,6 +158,17 @@ $(document).ready(function() {
                         datarow['operation'] = $(row).find('li:nth-child(7)').html();
                         datarow['body'] = resp.data[index].body
                         datarow['kind_id'] = resp.data[index].kind_id
+						datarow['country_id'] = resp.data[index].country_id
+                        datarow['picture'] =  "<img width='50px' height='30px' src="+ resp.data[index].img_url +" >"+"</img>"
+                        datarow['country'] = findArrayByValue(country_data,
+                            datarow['country_id'],
+                            function (x,y) {
+                                if (x.id === y) {
+                                    return true
+                                }
+                                return false
+                            }
+                        ).<fmt:message key="data.field" />
                         data[data.length] = datarow;
                     }
                     dataAdapter.dataBind()

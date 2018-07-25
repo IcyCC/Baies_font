@@ -95,7 +95,7 @@ $(document).ready(function() {
 	};
 	var dataAdapter = new $.jqx.dataAdapter(source);
 	var settings = {
-			width: '850px',
+			width: '600px',
 			source: dataAdapter,
 			autoheight: true,
 			autorowheight: true,
@@ -105,7 +105,7 @@ $(document).ready(function() {
 			theme: '<%=jqx_theme %>',
 			columns: [{text: '编号', dataField: 'id', width: 100, align: 'center', cellsalign: 'center'},
 			          {text: '图片地址', dataField: 'show_img', width: 150, align: 'center', cellsalign: 'center'},
-			          {text: '跳转体制', dataField: 'to_url', width: 100, align: 'center', cellsalign: 'center'},
+			          {text: '跳转地址', dataField: 'to_url', width: 100, align: 'center', cellsalign: 'center'},
 			          {text: '状态', dataField: 'status', width: 100, align: 'center', cellsalign: 'center'},
 				{text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
             ],

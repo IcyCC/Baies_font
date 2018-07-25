@@ -115,7 +115,7 @@ $(document).ready(function() {
 	};
 	var dataAdapter = new $.jqx.dataAdapter(source);
 	var settings = {
-			width: '850px',
+			width: '670px',
 			source: dataAdapter,
 			autoheight: true,
 			autorowheight: true,
@@ -123,14 +123,14 @@ $(document).ready(function() {
 			pageable: true,
 			pagesize: 10,
 			theme: '<%=jqx_theme %>',
-			columns: [{text: '编号', dataField: 'id', width: 100, align: 'center', cellsalign: 'center'},
-			          {text: '登录名', dataField: 'name', width: 150, align: 'center', cellsalign: 'center'},
-			          {text: '邮箱', dataField: 'real_name', width: 100, align: 'center', cellsalign: 'center'},
+			columns: [{text: '<fmt:message key="user.id" />', dataField: 'id', width: 100, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="user.name" />', dataField: 'name', width: 150, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="user.mail" />', dataField: 'real_name', width: 100, align: 'center', cellsalign: 'center'},
 			          {text: '<fmt:message key="common.dimension.country" />', dataField: 'country', width: 100, align: 'center', cellsalign: 'center'},
 			          // {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
 			          // {text: '最后登录时间', dataField: 'last_login_time', width: 100, align: 'center', cellsalign: 'center'},
-			          {text: '角色', dataField: 'role', width: 100, align: 'center', cellsalign: 'center'},
-			          {text: '操作', dataField: 'operation', width: 100, align: 'center', cellsalign: 'center'}
+			          {text: '<fmt:message key="user.role" />', dataField: 'role', width: 100, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 100, align: 'center', cellsalign: 'center'}
 			          ],
 			showtoolbar: true,
 			rendertoolbar: function(toolbar) {

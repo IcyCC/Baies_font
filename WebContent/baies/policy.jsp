@@ -89,9 +89,9 @@ $(document).ready(function() {
 		pageable: true,
 		pagesize: 5,
 		columns: [
-		    {text: '标题', dataField: 'title'},
-            {text: '封面', dataField:'img_url'},
-		    {text: '内容', dataField: 'body'}
+		    {text: '<fmt:message key="post.title" />', dataField: 'title'},
+            {text: '<fmt:message key="post.img_url" />', dataField:'img_url'},
+		    {text: '<fmt:message key="post.body" />', dataField: 'body'}
 		    ]
     };
 
@@ -114,10 +114,9 @@ $(document).ready(function() {
 		pageable: true,
 		pagesize: 5,
 		columns: [
-		    {text: '标题', dataField: 'title'},
-            {text: '封面', dataField:'img_url'},
-		    {text: '内容', dataField: 'body'}
-
+            {text: '<fmt:message key="post.title" />', dataField: 'title'},
+            {text: '<fmt:message key="post.img_url" />', dataField:'img_url'},
+            {text: '<fmt:message key="post.body" />', dataField: 'body'}
 		    ]
     };
 
@@ -140,9 +139,9 @@ $(document).ready(function() {
 		pageable: true,
 		pagesize: 5,
 		columns: [
-		    {text: '标题', dataField: 'title'},
-            {text: '封面', dataField:'img_url'},
-		    {text: '内容', dataField: 'body'}
+            {text: '<fmt:message key="post.title" />', dataField: 'title'},
+            {text: '<fmt:message key="post.img_url" />', dataField:'img_url'},
+            {text: '<fmt:message key="post.body" />', dataField: 'body'}
 		    ]
     };
 
@@ -165,9 +164,9 @@ $(document).ready(function() {
 		pageable: true,
 		pagesize: 5,
 		columns: [
-		    {text: '标题', dataField: 'title'},
-            {text: '封面', dataField:'img_url'},
-		    {text: '内容', dataField: 'body'}
+            {text: '<fmt:message key="post.title" />', dataField: 'title'},
+            {text: '<fmt:message key="post.img_url" />', dataField:'img_url'},
+            {text: '<fmt:message key="post.body" />', dataField: 'body'}
 
 		    ]
     };
