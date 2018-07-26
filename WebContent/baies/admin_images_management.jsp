@@ -17,7 +17,7 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
 <title><fmt:message key="common.title" /></title>
 <script>
 
-page_id = 2;
+page_id = 3;
 
 $(document).ready(function() {
 	
@@ -103,17 +103,17 @@ $(document).ready(function() {
 			pageable: true,
 			pagesize: 10,
 			theme: '<%=jqx_theme %>',
-			columns: [{text: '编号', dataField: 'id', width: 100, align: 'center', cellsalign: 'center'},
-			          {text: '图片地址', dataField: 'show_img', width: 150, align: 'center', cellsalign: 'center'},
-			          {text: '跳转地址', dataField: 'to_url', width: 100, align: 'center', cellsalign: 'center'},
-			          {text: '状态', dataField: 'status', width: 100, align: 'center', cellsalign: 'center'},
-				{text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+			columns: [{text: '<fmt:message key="image.id" />', dataField: 'id', width: 100, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="image.url" />', dataField: 'show_img', width: 150, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="image.to_url" />', dataField: 'to_url', width: 100, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="image.status" />', dataField: 'status', width: 100, align: 'center', cellsalign: 'center'},
+				{text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
             ],
 			showtoolbar: true,
 			rendertoolbar: function(toolbar) {
 				var container = $('<div style="margin: 5px 10px 5px 5px; text-align: right;"></div>');
 				toolbar.append(container);
-				container.append('<input id="addrowbutton" type="button" value="添加图片" />');
+				container.append('<input id="addrowbutton" type="button" value="<fmt:message key="comm.new" />" />');
 				$("#addrowbutton").jqxButton();
 				$("#addrowbutton").on('click', function () {
 					$('#edit_title_input').val('');
@@ -284,7 +284,7 @@ $(document).ready(function() {
 	<li>
 		<button>
 			<img class="edit_buttons" src="../js/jqwidgets-4.1.2/styles/images/icon-edit.png"
-				title="编辑" style="width: 16px; height: 16px; vertical-align: middle;">
+				title="<fmt:message key="comm.editor" />" style="width: 16px; height: 16px; vertical-align: middle;">
 		</button>
 		<%--<button>--%>
 			<%--<img class="delete_buttons" src="../js/jqwidgets-4.1.2/styles/images/icon-delete.png"--%>
@@ -298,8 +298,8 @@ $(document).ready(function() {
 	<div style="overflow: hidden;">
 		<div id="dialog_window_content" style="margin: 20px;">&nbsp;</div>
 		<div class="right margin_10">
-			<input type="button" id="dialog_window_ok_button" value="确定">
-			<input type="button" id="dialog_window_cancel_button" value="取消">
+			<input type="button" id="dialog_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="dialog_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -310,21 +310,21 @@ $(document).ready(function() {
 	<div style="overflow: hidden; padding: 20px;">
 		<table>
 			<tr>
-				<td>图片链接:</td>
+				<td><fmt:message key="image.url" />:</td>
 				<td><input type="text" id="img_url_input" style="width: 200px;"></td>
 			</tr>
 			<tr>
-				<td>目标链接:</td>
+				<td><fmt:message key="image.to_url" />:</td>
 				<td><input type="text" id="to_url_input" style="width: 200px;"></td>
 			</tr>
 			<tr>
-				<td>状态:</td>
+				<td><fmt:message key="image.status" />:</td>
 				<td id="status_input"></td>
 			</tr>
 		</table>
 		<div class="right margin_10" id="operator_column">
-			<input type="button" id="edit_window_ok_button" value="保存">
-			<input type="button" id="edit_window_cancel_button" value="取消">
+			<input type="button" id="edit_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="edit_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>

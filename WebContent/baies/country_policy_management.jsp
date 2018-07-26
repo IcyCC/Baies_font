@@ -147,7 +147,7 @@ $(document).ready(function() {
 			rendertoolbar: function(toolbar) {
 				var container = $('<div style="margin: 5px 10px 5px 5px; text-align: right;"></div>');
 				toolbar.append(container);
-				container.append('<input id="addrowbutton" type="button" value="新建信息" />');
+				container.append('<input id="addrowbutton" type="button" value="<fmt:message key="comm.new" />" />');
 				$("#addrowbutton").jqxButton();
 				$("#addrowbutton").on('click', function () {
 					$('#edit_title_input').val('');
@@ -249,7 +249,7 @@ $(document).ready(function() {
         rendertoolbar: function(toolbar) {
             var container = $('<div style="margin: 5px 10px 5px 5px; text-align: right;"></div>');
             toolbar.append(container);
-            container.append('<input id="addrowbutton2" type="button" value="新建信息" />');
+            container.append('<input id="addrowbutton2" type="button" value="<fmt:message key="comm.new" />" />');
             $("#addrowbutton2").jqxButton();
             $("#addrowbutton2").on('click', function () {
                 $('#edit_title_input').val('');
@@ -351,7 +351,7 @@ $(document).ready(function() {
         rendertoolbar: function(toolbar) {
             var container = $('<div style="margin: 5px 10px 5px 5px; text-align: right;"></div>');
             toolbar.append(container);
-            container.append('<input id="addrowbutton3" type="button" value="新建信息" />');
+            container.append('<input id="addrowbutton3" type="button" value="<fmt:message key="comm.new" />" />');
             $("#addrowbutton3").jqxButton();
             $("#addrowbutton3").on('click', function () {
                 $('#edit_title_input').val('');
@@ -452,7 +452,7 @@ $(document).ready(function() {
         rendertoolbar: function(toolbar) {
             var container = $('<div style="margin: 5px 10px 5px 5px; text-align: right;"></div>');
             toolbar.append(container);
-            container.append('<input id="addrowbutton4" type="button" value="新建信息" />');
+            container.append('<input id="addrowbutton4" type="button" value="<fmt:message key="comm.new" />" />');
             $("#addrowbutton4").jqxButton();
             $("#addrowbutton4").on('click', function () {
                 $('#edit_title_input').val('');
@@ -979,49 +979,51 @@ $(document).ready(function() {
 		<li style="margin-left: 10px;">
 			<div style="height: 20px; margin-top: 5px;">
 				<div style="margin-left: 4px; vertical-align: middle; text-align: center;">
-					农业发展政策信息
+					<fmt:message key="cat.dev" />
 				</div>
 			</div>
 		</li>
 		<li>
 			<div style="height: 20px; margin-top: 5px;">
 				<div style="margin-left: 4px; vertical-align: middle; text-align: center;">
-					农业贸易政策信息
+					<fmt:message key="cat.trade" />
 				</div>
 			</div>
 		</li>
 		<li>
 			<div style="height: 20px; margin-top: 5px;">
 				<div style="margin-left: 4px; vertical-align: middle; text-align: center;">
-					农业科技发展信息
+					<fmt:message key="cat.tech" />
 				</div>
 			</div>
 		</li>
 		<li>
 			<div style="height: 20px; margin-top: 5px;">
 				<div style="margin-left: 4px; vertical-align: middle; text-align: center;">
-					渔业水产政策信息
+					<fmt:message key="cat.fish" />
 				</div>
 			</div>
 		</li>
 	</ul>
 	<div style="padding: 25px;">
-		<h1>农业发展政策信息管理</h1>
+		<h1>
+			<fmt:message key="cat.dev" />
+		</h1>
 		<br><br>
 		<div id="news_grid_1"></div>
 	</div>
 	<div style="padding: 25px;">
-		<h1>农业贸易政策信息管理</h1>
+		<h1><fmt:message key="cat.trade" /></h1>
 		<br><br>
 		<div id="news_grid_2"></div>
 	</div>
 	<div style="padding: 25px;">
-		<h1>农业科技发展信息管理</h1>
+		<h1><fmt:message key="cat.tech" /></h1>
 		<br><br>
 		<div id="news_grid_3"></div>
 	</div>
 	<div style="padding: 25px;">
-		<h1>渔业水产政策信息管理</h1>
+		<h1><fmt:message key="cat.fish" /></h1>
 		<br><br>
 		<div id="news_grid_4"></div>
 	</div>
@@ -1038,7 +1040,7 @@ $(document).ready(function() {
 	<li>
 		<button>
 			<img class="edit_buttons" src="../js/jqwidgets-4.1.2/styles/images/icon-edit.png"
-				title="编辑" style="width: 16px; height: 16px; vertical-align: middle;">
+				title="<fmt:message key="comm.editor" />" style="width: 16px; height: 16px; vertical-align: middle;">
 		</button>
 		<button>
 			<img class="delete_buttons" src="../js/jqwidgets-4.1.2/styles/images/icon-delete.png"
@@ -1052,8 +1054,8 @@ $(document).ready(function() {
 	<div style="overflow: hidden;">
 		<div id="dialog_window_content" style="margin: 20px;">&nbsp;</div>
 		<div class="right margin_10">
-			<input type="button" id="dialog_window_ok_button" value="确定">
-			<input type="button" id="dialog_window_cancel_button" value="取消">
+			<input type="button" id="dialog_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="dialog_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -1062,14 +1064,14 @@ $(document).ready(function() {
 <div id="edit_window">
 	<div>录入信息</div>
 	<div style="overflow: hidden; padding: 20px;">
-		<div class="left" style="width: 50px;">标题:</div>
+		<div class="left" style="width: 50px;"><fmt:message key="post.title" />:</div>
 		<input class="left" type="text" id="edit_title_input">
-		<span>上传封面: <input type="file" id="cover-input-file" name="file" accept="image/*" style="height:40px"></span>
-		<div>国家:<div id="country_input"></div></div>
+		<span><fmt:message key="post.img_url" />: <input type="file" id="cover-input-file" name="file" accept="image/*" style="height:40px"></span>
+		<div><fmt:message key="common.dimension.country" />:<div id="country_input"></div></div>
 		<textarea id="edit_content_editor"></textarea>
 		<div class="right margin_10">
-			<input type="button" id="edit_window_ok_button" value="保存">
-			<input type="button" id="edit_window_cancel_button" value="取消">
+			<input type="button" id="edit_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="edit_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>

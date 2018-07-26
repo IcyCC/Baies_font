@@ -96,8 +96,8 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
             {text: '<fmt:message key="common.dimension.country" />', dataField: 'country', width: 80, align: 'center', cellsalign: 'center'},
             {text: '<fmt:message key="text.author" />', dataField: 'user', width: 80, align: 'center', cellsalign: 'center'},
             {text: '<fmt:message key="common.dimension.time" />', dataField: 'time', width: 100, align: 'center', cellsalign: 'center'},
-            {text: '版本说明', dataField: 'note', width: 285, align: 'center'},
-            {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+            {text: '<fmt:message key="log.note" />', dataField: 'note', width: 285, align: 'center'},
+            {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
         ]
     };
 
@@ -704,8 +704,8 @@ $(document).ready(function() {
 	<div style="overflow: hidden;">
 		<div id="dialog_window_content" style="margin: 20px;">&nbsp;</div>
 		<div class="right margin_10">
-			<input type="button" id="dialog_window_ok_button" value="确定">
-			<input type="button" id="dialog_window_cancel_button" value="取消">
+			<input type="button" id="dialog_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="dialog_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>

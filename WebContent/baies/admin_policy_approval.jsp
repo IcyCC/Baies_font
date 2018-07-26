@@ -366,8 +366,8 @@ $(document).ready(function() {
 	<div style="overflow: hidden;">
 		<div id="dialog_window_content" style="margin: 20px;">&nbsp;</div>
 		<div class="right margin_10">
-			<input type="button" id="dialog_window_ok_button" value="确定">
-			<input type="button" id="dialog_window_cancel_button" value="取消">
+			<input type="button" id="dialog_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="dialog_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -405,7 +405,7 @@ $(document).ready(function() {
 &lt;p&gt;全面贯彻党的十八大和十八届三中、四中、五中全会精神和中央农村工作会议精神，认真落实创新、协调、绿色、开放、共享发展理念，以持续推进草牧业科学发展为主线，坚持“生产生态有机结合、生态优先”的基本方针，创新制度、技术和组织方式，着力提升草原保护建设水平，实现生态稳步向好；着力促进草产业发展，加快建设现代饲草料产业体系；着力转变草食畜牧业发展方式，形成规模化生产、集约化经营的产业发展格局，为农牧业可持续发展和全面建成小康社会提供重要支撑。&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;（二）基本原则&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;——生态优先，草畜配套。根据区域自然资源的承载能力，在确保生态安全的前提下开展草原保护建设，妥善处理生产发展与生态环境保护的关系，为养而种，草畜配套，良性循环，实现生产与生态协调发展。&lt;/p&gt;
-&lt;p&gt;——优化布局，分区施策。综合考虑北方干旱半干旱区、青藏高寒区、东北华北湿润半湿润区和南方区的草原生态实际及草食畜牧业发展水平，统筹资源、产业、技术和市场等因素，结合全国种植业结构调整，科学确定发展重点和空间布局，推动形成绿色发展方式。&lt;/p&gt;
+&lt;p&gt;——优化布局，分区施策。综合考虑北方干旱半干旱区、青藏高寒区、东北华北湿润半湿润区和南方区的草原生态实际及草食畜牧业发展水平，统筹资源、产业、技术和市场等因素，结合全国种植业结构调整，科学<fmt:message key="comm.ok" />发展重点和空间布局，推动形成绿色发展方式。&lt;/p&gt;
 &lt;p&gt;——市场主导，政府引导。充分发挥市场配置资源的决定性作用，用好价格“指挥棒”和供求“杠杆”，激活草牧业发展内生动力。更好发挥政府引导作用，为各类经营主体营造良好的发展环境，构建多形式的利益联结机制。&lt;/p&gt;
 &lt;p&gt;——产业融合，提升效益。加强顶层设计，统筹规划，加快促进一二三产业融合，培育多元化产业融合主体，大力发展新型业态，引导产业集聚发展，完善多渠道产业融合服务，提升草牧业生产效率和规模效益。&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;（三）主要目标&lt;/b&gt;&lt;/p&gt;

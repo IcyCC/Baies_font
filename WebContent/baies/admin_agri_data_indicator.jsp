@@ -526,8 +526,8 @@ $(document).ready(function() {
 	<div style="overflow: hidden;">
 		<div id="dialog_window_content" style="margin: 20px; height: 50px;">&nbsp;</div>
 		<div class="right margin_10">
-			<input type="button" id="dialog_window_ok_button" value="确定">
-			<input type="button" id="dialog_window_cancel_button" value="取消">
+			<input type="button" id="dialog_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="dialog_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>

@@ -97,8 +97,8 @@ String jqx_theme = (String)request.getSession().getAttribute("jqx_theme");
             {text: '<fmt:message key="common.dimension.country" />', dataField: 'country', width: 80, align: 'center', cellsalign: 'center'},
             {text: '<fmt:message key="text.author" />', dataField: 'user', width: 80, align: 'center', cellsalign: 'center'},
             {text: '<fmt:message key="common.dimension.time" />', dataField: 'time', width: 100, align: 'center', cellsalign: 'center'},
-            {text: '版本说明', dataField: 'note', width: 285, align: 'center'},
-            {text: '操作', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
+            {text: '<fmt:message key="log.note" />', dataField: 'note', width: 285, align: 'center'},
+            {text: '<fmt:message key="comm.operation" />', dataField: 'operation', width: 80, align: 'center', cellsalign: 'center'}
         ]
     };
 

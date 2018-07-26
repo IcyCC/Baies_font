@@ -125,7 +125,7 @@ $(document).ready(function() {
 			theme: '<%=jqx_theme %>',
 			columns: [{text: '<fmt:message key="user.id" />', dataField: 'id', width: 100, align: 'center', cellsalign: 'center'},
 			          {text: '<fmt:message key="user.name" />', dataField: 'name', width: 150, align: 'center', cellsalign: 'center'},
-			          {text: '<fmt:message key="user.mail" />', dataField: 'real_name', width: 100, align: 'center', cellsalign: 'center'},
+			          {text: '<fmt:message key="user.mail" />', dataField: 'email', width: 100, align: 'center', cellsalign: 'center'},
 			          {text: '<fmt:message key="common.dimension.country" />', dataField: 'country', width: 100, align: 'center', cellsalign: 'center'},
 			          // {text: '创建时间', dataField: 'create_time', width: 100, align: 'center', cellsalign: 'center'},
 			          // {text: '最后登录时间', dataField: 'last_login_time', width: 100, align: 'center', cellsalign: 'center'},
@@ -136,7 +136,7 @@ $(document).ready(function() {
 			rendertoolbar: function(toolbar) {
 				var container = $('<div style="margin: 5px 10px 5px 5px; text-align: right;"></div>');
 				toolbar.append(container);
-				container.append('<input id="addrowbutton" type="button" value="添加用户" />');
+				container.append('<input id="addrowbutton" type="button" value="<fmt:message key="comm.new" />" />');
 				$("#addrowbutton").jqxButton();
 				$("#addrowbutton").on('click', function () {
 					$('#edit_title_input').val('');
@@ -347,7 +347,7 @@ $(document).ready(function() {
 	<li>
 		<button>
 			<img class="edit_buttons" src="../js/jqwidgets-4.1.2/styles/images/icon-edit.png"
-				title="编辑" style="width: 16px; height: 16px; vertical-align: middle;">
+				title="<fmt:message key="comm.editor" />" style="width: 16px; height: 16px; vertical-align: middle;">
 		</button>
 		<button>
 			<img class="delete_buttons" src="../js/jqwidgets-4.1.2/styles/images/icon-delete.png"
@@ -361,8 +361,8 @@ $(document).ready(function() {
 	<div style="overflow: hidden;">
 		<div id="dialog_window_content" style="margin: 20px;">&nbsp;</div>
 		<div class="right margin_10">
-			<input type="button" id="dialog_window_ok_button" value="确定">
-			<input type="button" id="dialog_window_cancel_button" value="取消">
+			<input type="button" id="dialog_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="dialog_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -397,8 +397,8 @@ $(document).ready(function() {
 			</tr>
 		</table>
 		<div class="right margin_10" id="operator_column">
-			<input type="button" id="edit_window_ok_button" value="保存">
-			<input type="button" id="edit_window_cancel_button" value="取消">
+			<input type="button" id="edit_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="edit_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>

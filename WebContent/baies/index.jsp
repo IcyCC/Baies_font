@@ -42,7 +42,7 @@ var econ_query_args = {
     country_ids: [1,3,2],
 	table_id: 1,
 	index_ids: [2,3,1],
-	start_time: 2013,
+	start_time: 2015,
 	end_time: 2018
 };
 
@@ -85,7 +85,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: true,
+        async: false,
         success: function (resp) {
             for (var index in resp.data) {
                 country_data.push(resp.data[index])
@@ -103,7 +103,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: true,
+        async: false,
         success: function (resp) {
             for (var index in resp.data) {
                 arg_kind_data.push(resp.data[index])
@@ -120,7 +120,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        async: true,
+        async: false,
         success: function (resp) {
             for (var table in resp.data) {
                 console.log('table', resp.data[table])
@@ -167,8 +167,7 @@ $(document).ready(function() {
             var data = result.data
             console.log(data)
             data.forEach(function (value) {
-                $("#scroll_view").append('<div><div class="photo" style="background-image: url(' + value.img_url+
-                    ')"></div></div>')
+                $("#scroll_view").append('<div><a href='+ value.to_rul + '><div class="photo" style="background-image: url(' + value.img_url+ ')"></div></a></div>')
             })
         }
     });
@@ -404,7 +403,7 @@ $(document).ready(function() {
 	};
 
 	$('#agri_tabs').jqxTabs({ width: '100%', position: 'top', initTabContent: init_agri_widgets, theme: '<%=jqx_theme %>'});
-	
+
 	$('#policy_expander_3').jqxExpander({
 		width: '290px', height: '280px', showArrow: false, toggleMode: 'none', theme: '<%=jqx_theme %>'
 	});
@@ -423,7 +422,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        url: host+"/qualitative/Post/simple?show=true",
+        url: host+"/qualitative/Post/simple?show=true&"+'country_id='+current_user.country.id,
         data: {},
         success: function (result) {
             console.log(result)
@@ -499,7 +498,7 @@ $(document).ready(function() {
 		<div style="overflow: hidden;">
 			<div id="econ_tabs">
 				<ul>
-					<li><fmt:message key="text.population" /></li>
+					<li><fmt:message key="comm.detail" /></li>
 				</ul>
 				<div style="overflow: hidden;"><div id="data_chart_1" style="width: 350px; height: 220px;"></div></div>
 			</div>
@@ -538,7 +537,7 @@ $(document).ready(function() {
 		<div style="overflow: hidden;">
 			<div id="agri_tabs">
 				<ul>
-					<li><fmt:message key="text.production" /></li>
+					<li><fmt:message key="comm.detail" /></li>
 				</ul>
 				<div><div id="data_grid_1"></div></div>
 			</div>

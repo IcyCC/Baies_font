@@ -12,16 +12,16 @@ String jqx_nav_theme = (String)request.getSession().getAttribute("jqx_nav_theme"
 %>
 
 <div id="nav1_admin" style="visibility: hidden;">
-	<ul>
+	<ul id="nav1_admin_ul">
 		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.approval" /></li>
 		<li style="height: 35px; line-height: 35px;"><fmt:message key="nav.system_admin.indicator" /></li>
-		<li style="height: 25px; line-height: 35px;"><fmt:message key="nav.system_admin.user" /></li>
-		<li style="height: 25px; line-height: 35px;"><fmt:message key="nav.system_admin.images" /></li>
+		<li class="country_econ_table_nav" style="height: 25px; line-height: 35px;"><fmt:message key="nav.system_admin.user" /></li>
+		<li  class="country_arg_table_nav" style="height: 25px; line-height: 35px;"><fmt:message key="nav.system_admin.images" /></li>
 	</ul>
 	<div></div>
 	<div></div>
-	<div></div>
-	<div></div>
+	<div class="country_econ_table_nav"></div>
+	<div class="country_arg_table_nav"></div>
 </div>
 <script>
 $(document).ready(function() {

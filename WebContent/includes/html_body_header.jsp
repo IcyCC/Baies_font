@@ -30,56 +30,40 @@
 
 <script type="text/javascript">
 
-    var current_user = {};
 
     $(document).ready(function () {
         $("#jqxLoader").jqxLoader({ height: document.body.scrollHeight,
 		width: document.body.scrollWidth})
         $("#jqxLoader").jqxLoader('open')
-        $.ajax({
-            type:'GET',
-            url:host+'/user/current_user',
-            data: {},
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            async: false ,
-            success: function (resp) {
-                current_user = resp.data[0]
-                $("#curent_user_detail").text( resp.data[0].username)
-            }.bind(this)
-        })
 
-        user_ban = function () {
+
+        var user_ban = function () {
             console.log(current_user)
-            if (current_user.role.name === "Anonymous")
-            {
+            if (current_user.role.name === "Anonymous") {
                 console.log("匿名登录")
-                $('#login').css("display","inline-block")
-                $('#country_manage').css("display","none")
-                $('#system_manage').css("display","none")
-                $('#logout').css("display","none")
+                $('#login').css("display", "inline-block")
+                $('#country_manage').css("display", "none")
+                $('#system_manage').css("display", "none")
+                $('#logout').css("display", "none")
             }
-            else if(current_user.role.name === "CountryQualitative" || current_user.role.name === "User"|| current_user.role.name === "CountryQuantify")
-            {
+            else if (current_user.role.name === "CountryQualitative" || current_user.role.name === "User" || current_user.role.name === "CountryQuantify") {
                 console.log("用户")
-                $('#login').css("display","none")
-                $('#country_manage').css("display","inline-block")
-                $('#system_manage').css("display","none")
-                $('#logout').css("display","inline-block")
+                $('#login').css("display", "none")
+                $('#country_manage').css("display", "inline-block")
+                $('#system_manage').css("display", "none")
+                $('#logout').css("display", "inline-block")
             }
-            else if(current_user.role.name === "Administrator")
-            {
+            else if (current_user.role.name === "Administrator") {
                 console.log("管理")
-                $('#login').css("display","none")
-                $('#country_manage').css("display","inline-block")
-                $('#system_manage').css("display","inline-block")
-                $('#logout').css("display","inline-block")
+                $('#login').css("display", "none")
+                $('#country_manage').css("display", "inline-block")
+                $('#system_manage').css("display", "inline-block")
+                $('#logout').css("display", "inline-block")
             }
         }
-
         user_ban()
+
+        $("#curent_user_detail").text( current_user.username)
 
         $("#jqxwindow").jqxWindow({ height:150, width: 200, theme: 'summer',isModal: true,autoOpen: false});
 
@@ -157,12 +141,15 @@
 				&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a href="" id="login">登录</a>
 				<span id="manage">
-			欢迎您<span id="curent_user_detail"></span>
+			<fmt:message key="comm.welcome" />&nbsp;&nbsp;<span id="curent_user_detail"></span>
 			<span id="logout"> <a href="./"><fmt:message key="text.logout" /></a></span>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="index.jsp"><fmt:message key="nav.query_user.index" /></a>
+			&nbsp;
 			<a id="country_manage" href="country_policy_management.jsp"><fmt:message key="common.sub_system.country_manage" /></a>
 			&nbsp;
 			<a id="system_manage" href="admin_policy_approval.jsp"><fmt:message key="common.sub_system.system_manage" /></a>
+
 		</span>
 			</div>
 			<div class="clear"></div>

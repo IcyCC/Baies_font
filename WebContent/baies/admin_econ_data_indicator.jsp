@@ -366,9 +366,9 @@ $(document).ready(function() {
 	<div><fmt:message key="text.category" /></div>
 	<div style="overflow: hidden;">
 		<div id="cat_tree" style="border: none;"></div>
-		<input type="button" id="cat_add_button" value="添加" class="left">
-		<input type="button" id="cat_delete_button" value="删除" class="left">
-		<input type="button" id="cat_edit_button" value="编辑" class="left">
+		<input type="button" id="cat_add_button" value="<fmt:message key="comm.new" />" class="left">
+		<input type="button" id="cat_delete_button" value="<fmt:message key="comm.delete" />" class="left">
+		<input type="button" id="cat_edit_button" value="<fmt:message key="comm.editor" />" class="left">
 		<div class="clear"></div>
 	</div>
 </div>
@@ -380,9 +380,9 @@ $(document).ready(function() {
 			<div><fmt:message key="common.dimension.indicator" /></div>
 			<div style="overflow: hidden;">
 				<div id="variable_list" style="border: none;"></div>
-				<input type="button" id="variable_add_button" value="添加" class="left">
-				<input type="button" id="variable_delete_button" value="删除" class="left">
-				<input type="button" id="variable_edit_button" value="编辑" class="left">
+				<input type="button" id="variable_add_button" value="<fmt:message key="comm.new" />" class="left">
+				<input type="button" id="variable_delete_button" value="<fmt:message key="comm.delete" />" class="left">
+				<input type="button" id="variable_edit_button" value="<fmt:message key="comm.editor" />" class="left">
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -397,8 +397,8 @@ $(document).ready(function() {
 	<div style="overflow: hidden;">
 		<div id="dialog_window_content" style="margin: 20px; height: 50px;">&nbsp;</div>
 		<div class="right margin_10">
-			<input type="button" id="dialog_window_ok_button" value="确定">
-			<input type="button" id="dialog_window_cancel_button" value="取消">
+			<input type="button" id="dialog_window_ok_button" value="<fmt:message key="comm.ok" />">
+			<input type="button" id="dialog_window_cancel_button" value="<fmt:message key="comm.cancel" />">
 		</div>
 		<div class="clear"></div>
 	</div>

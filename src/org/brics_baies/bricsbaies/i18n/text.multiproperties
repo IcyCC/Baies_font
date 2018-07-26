@@ -426,7 +426,7 @@
             <Disabled>false</Disabled>
             <MultiLine>false</MultiLine>
             <Value disabled="false">Edit</Value>
-            <Value disabled="false">编辑</Value>
+            <Value disabled="false"><fmt:message key="comm.editor" /></Value>
         </Property>
         <Property>
             <Name>text.export</Name>

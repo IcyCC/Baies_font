@@ -12,15 +12,27 @@ String jqx_nav_theme = (String)request.getSession().getAttribute("jqx_nav_theme"
 %>
 
 <div id="nav1">
-	<ul>
-		<li><fmt:message key="nav.query_user.index" /></li>
-		<li><fmt:message key="nav.query_user.policy" /></li>
-		<li><fmt:message key="nav.query_user.econ_data" /></li>
-		<li><fmt:message key="nav.query_user.agri_data" /></li>
+	<ul id="nav1_url">
 	</ul>
 </div>
 <script>
 $(document).ready(function() {
+        if (current_user.role.name === "Anonymous") {
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.index" /></li>')
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.policy" /></li>')
+        }
+        else if (current_user.role.name === "CountryQualitative" || current_user.role.name === "User" || current_user.role.name === "CountryQuantify") {
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.index" /></li>')
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.policy" /></li>')
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.econ_data" /></li>')
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.agri_data" /></li>')
+        }
+        else if (current_user.role.name === "Administrator") {
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.index" /></li>')
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.policy" /></li>')
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.econ_data" /></li>')
+            $('#nav1_url').append('<li><fmt:message key="nav.query_user.agri_data" /></li>')
+		}
 	$('#nav1').jqxNavBar({width: 998, height: 40, theme: 'darkblue',
 		selectedItem: page_id});
 	$('#nav1').on('change', function() {
