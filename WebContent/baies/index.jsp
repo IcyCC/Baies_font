@@ -422,7 +422,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        url: host+"/qualitative/Post/simple?show=true&"+'country_id='+current_user.country.id,
+        url: host+"/qualitative/Post/simple?show=true,
         data: {},
         success: function (result) {
             console.log(result)
