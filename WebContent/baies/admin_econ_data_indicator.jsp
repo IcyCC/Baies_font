@@ -220,6 +220,11 @@ $(document).ready(function() {
             if(event.args.dialogResult.OK) {
                 var post_data = {name: '', cn_alis: '', en_alis: '', unit: '', table_id: 0}
 
+                if (!$('#cat_tree').jqxTree('getSelectedItem')) {
+                    $('#message_notification_content').html('请先选择表');
+                    $('#message_notification').jqxNotification('open');
+                    return
+                }
                 post_data.name = $('#d_index_editor_name').val()
                 post_data.cn_alis = $('#d_index_editor_cn_alis').val()
                 post_data.en_alis = $('#d_index_editor_en_alis').val()

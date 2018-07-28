@@ -1,4 +1,4 @@
-var host = "http://123.206.8.125:5000"
+var host = "http://101.200.52.233:5300"
 
 var start_year = 2005;
 var myDate = new Date();

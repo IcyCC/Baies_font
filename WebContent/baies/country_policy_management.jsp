@@ -517,7 +517,7 @@ $(document).ready(function() {
 	});
 
     $('#edit_window').jqxWindow({
-		width: 700, height: 580, resizable: false,  isModal: true, autoOpen: false,
+		width: 700, height: 620, resizable: false,  isModal: true, autoOpen: false,
 		okButton: $("#edit_window_ok_button"), cancelButton: $("#edit_window_cancel_button"),
 		modalOpacity: 0.3, theme: '<%=jqx_theme %>'
 	});

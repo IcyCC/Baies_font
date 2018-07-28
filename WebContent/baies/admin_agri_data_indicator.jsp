@@ -240,6 +240,12 @@ $(document).ready(function() {
             if(event.args.dialogResult.OK) {
                 var post_data = {name:'', cn_alis: '', en_alis:'', unit:'', table_id:0}
 
+                if (!$('#cat_tree').jqxTree('getSelectedItem')) {
+                    $('#message_notification_content').html('请先选择表');
+                    $('#message_notification').jqxNotification('open');
+                    return
+				}
+
                 post_data.name = $('#d_index_editor_name').val()
                 post_data.cn_alis = $('#d_index_editor_cn_alis').val()
                 post_data.en_alis = $('#d_index_editor_en_alis').val()
@@ -373,7 +379,7 @@ $(document).ready(function() {
     });
 
     $('#product_edit_button').on('click', function(event) {
-        $('#dialog_window_content').html('<table><tr><td>请输入名称:</td><td><input id="d_kind_editor_name" type="type"></td></tr>'   +
+        $('#dialog_window_content').html('<table><tr><td>请输入名称:</td><td><input id="d_kind_editor_name"></td></tr>'   +
             '\'<tr><td>请输入中文名:</td><td><input id="d_kind_editor_cn_alis" type="text"></td></tr>'+
             '<tr><td>请输入英文名:</td><td><input id="d_kind_editor_en_alis" type="text"></td></tr>'+'</table>');
         $('#dialog_window').one('close', function(event) {

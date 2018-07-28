@@ -166,8 +166,13 @@ $(document).ready(function() {
             console.log(result)
             var data = result.data
             console.log(data)
+			if (data.length < 1){
+
+                $("#scroll_view").append('<div><div class="photo" style="background-image: url(../images/sv1.jpg)"></div></div>')
+			}
             data.forEach(function (value) {
-                $("#scroll_view").append('<div><a href='+ value.to_rul + '><div class="photo" style="background-image: url(' + value.img_url+ ')"></div></a></div>')
+                $("#scroll_view").append('<div><div class="photo" style="background-image: url(' + value.img_url+
+                    ')"></div></div>')
             })
         }
     });
@@ -232,6 +237,9 @@ $(document).ready(function() {
             crossDomain: true,
             async: false,
             success: function (resp) {
+                if(resp.data.length <1){
+                    return
+                }
 
                 for (var cur = econ_query_args.start_time;cur<= econ_query_args.end_time; cur++) {
                     econ_data_source.push({time:cur})
@@ -331,6 +339,9 @@ $(document).ready(function() {
             crossDomain: true,
             async: true,
             success: function (resp) {
+				if(resp.data.length <1){
+				    return
+				}
 
                 for (var index_id_i in arg_query_args.index_ids) {
                     var index_id = arg_query_args.index_ids[index_id_i]
@@ -422,7 +433,7 @@ $(document).ready(function() {
             withCredentials: true
         },
         crossDomain: true,
-        url: host+"/qualitative/Post/simple?show=true,
+        url: host+"/qualitative/Post/simple?show=true",
         data: {},
         success: function (result) {
             console.log(result)
