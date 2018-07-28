@@ -139,7 +139,7 @@
 				&nbsp;
 				<a href="./index.jsp?language=en">English</a>
 				&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href="" id="login">登录</a>
+				<a href="" id="login">login</a>
 				<span id="manage">
 			<fmt:message key="comm.welcome" />&nbsp;&nbsp;<span id="curent_user_detail"></span>
 			<span id="logout"> <a href="./"><fmt:message key="text.logout" /></a></span>
@@ -239,11 +239,11 @@
 		<!--main start-->
 		<div id="main">
 			<div id='jqxwindow'>
-				<div>登录</div>
+				<div>login</div>
 				<div>
 					<form id="loginForm" onsubmit="return false" action="##" method="post">
-						<div>用户名：<input name="username" type="text" id="username" size="15" value=""/></div>
-						<div>密　码：<input name="password" type="password" id="password" size="15" value=""/></div>
+						<div><fmt:message key="user.username" />：<input name="username" type="text" id="username" size="15" value=""/></div>
+						<div><fmt:message key="user.password" />：<input name="password" type="password" id="password" size="15" value=""/></div>
 						<div id="submit"><input type="button" value="登录"></div>
 					</form>
 					<%--<form id="loginForm" method="post">--%>
